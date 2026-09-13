@@ -54,7 +54,7 @@ Cần 2 quý liên tiếp đã chốt thì tab **Thay đổi** mới so sánh đ
    mọi khoá nằm trong Secrets, không nằm trong repo.
 2. **Đẩy code lên** — chạy hai lệnh trong PowerShell (lần đầu Windows mở trình duyệt hỏi đăng nhập GitHub):
    ```
-   cd "C:\Claude code	udoanh-radar"
+   cd "C:Claude code	udoanh-radar"
    git remote add origin https://github.com/<TÊN-GITHUB>/tudoanh-radar.git
    git push -u origin master:main
    ```
