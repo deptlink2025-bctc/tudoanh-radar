@@ -1,21 +1,38 @@
 {
  "trade_date": "2026-09-11",
- "generated_at": "2026-09-13T16:22:15+07:00",
+ "generated_at": "2026-09-13T17:45:06+07:00",
  "industry": {
-  "today_change": -25899094200.0,
-  "n_today": 1,
-  "vs_cost_change": 273057813899.0,
-  "size_total": 27432885244024.0,
+  "today_change": -47708958900.0,
+  "n_today": 4,
+  "vs_cost_change": 494232259042.0,
+  "size_total": 369792054428905.0,
   "rollup": [],
   "n_with_diff": 0,
   "buy": 0,
   "sell": 0
  },
- "alerts": [],
+ "alerts": [
+  {
+   "rule": "R4",
+   "broker": "CTS",
+   "ticker": "",
+   "hot": true,
+   "title": "CTS · lỗ so giá vốn vượt 15%",
+   "body": "-17.7% · 119 tỷ trên giá vốn 669 tỷ · chỉ báo lần đầu chạm"
+  },
+  {
+   "rule": "R4",
+   "broker": "FTS",
+   "ticker": "",
+   "hot": false,
+   "title": "FTS · lãi so giá vốn vượt 15%",
+   "body": "+3188.6% · 349 tỷ trên giá vốn 11 tỷ · chỉ báo lần đầu chạm"
+  }
+ ],
  "brokers": [
   {
    "symbol": "AGR",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,
@@ -23,23 +40,51 @@
   },
   {
    "symbol": "BSI",
-   "quarter": null,
-   "n_tracked": 0,
-   "today": null,
-   "since_quarter": null,
-   "vs_cost": null
+   "quarter": "2026Q2",
+   "n_tracked": 2,
+   "today": {
+    "value": 206674737000.0,
+    "prev_value": 211970656500.0,
+    "change": -5295919500.0,
+    "pct": -2.4984210491417747
+   },
+   "since_quarter": {
+    "change": -16681680000.0,
+    "pct": -7.468636999133094
+   },
+   "vs_cost": {
+    "cost": 215909804477.0,
+    "value": 206674737000.0,
+    "change": -9235067477.0,
+    "pct": -4.277280274219219,
+    "n_missing": 0
+   }
   },
   {
    "symbol": "CTS",
-   "quarter": null,
-   "n_tracked": 0,
-   "today": null,
-   "since_quarter": null,
-   "vs_cost": null
+   "quarter": "2026Q2",
+   "n_tracked": 12,
+   "today": {
+    "value": 550805640100.0,
+    "prev_value": 560719585300.0,
+    "change": -9913945200.0,
+    "pct": -1.76807542663161
+   },
+   "since_quarter": {
+    "change": -127148566910.0,
+    "pct": -18.75474266481313
+   },
+   "vs_cost": {
+    "cost": 669449313574.0,
+    "value": 550805640100.0,
+    "change": -118643673474.0,
+    "pct": -17.722577507861658,
+    "n_missing": 0
+   }
   },
   {
    "symbol": "DSE",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,
@@ -47,15 +92,29 @@
   },
   {
    "symbol": "FTS",
-   "quarter": null,
-   "n_tracked": 0,
-   "today": null,
-   "since_quarter": null,
-   "vs_cost": null
+   "quarter": "2026Q2",
+   "n_tracked": 1,
+   "today": {
+    "value": 360000000000.0,
+    "prev_value": 366600000000.0,
+    "change": -6600000000.0,
+    "pct": -1.8003273322422242
+   },
+   "since_quarter": {
+    "change": -46800000000.0,
+    "pct": -11.504424778761058
+   },
+   "vs_cost": {
+    "cost": 10946813906.0,
+    "value": 360000000000.0,
+    "change": 349053186094.0,
+    "pct": 3188.628116740729,
+    "n_missing": 0
+   }
   },
   {
    "symbol": "HCM",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,
@@ -63,7 +122,7 @@
   },
   {
    "symbol": "MBS",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,
@@ -71,7 +130,7 @@
   },
   {
    "symbol": "ORS",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,
@@ -101,7 +160,7 @@
   },
   {
    "symbol": "SSI",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,
@@ -109,7 +168,7 @@
   },
   {
    "symbol": "TCX",
-   "quarter": null,
+   "quarter": "2026Q2",
    "n_tracked": 0,
    "today": null,
    "since_quarter": null,

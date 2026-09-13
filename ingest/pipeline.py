@@ -56,22 +56,25 @@ def step_fetch(db, rep: Report, pdf_url: str = "") -> bool:
     return True
 
 
+# Trên ngưỡng này mới dùng bước tìm trang (Haiku) — dưới thì đọc cả cuốn cho chắc.
+# Đo trên 11 báo cáo Q2/2026: Haiku chọn nhầm bảng cân đối kế toán 8/11 lần, còn Opus đọc cả cuốn
+# (nén 90–100 DPI, 40–70 trang) đúng 11/11 với giá ~0,3 USD. Đơn giản hơn thắng.
+LOCATE_ABOVE_PAGES = 120
+
+
 def step_locate(db, rep: Report, pages: list[int] | None = None) -> bool:
     _set(db, rep, "locating", stuck_step="", stuck_reason="")
-    if not pages:
+    if pages:
+        rep.note_pages = ",".join(str(p) for p in pages)       # người dùng gõ số trang
+    elif rep.page_count and rep.page_count > LOCATE_ABOVE_PAGES:
         try:
-            pages = locator.locate(rep.pdf_path, rep.page_count)
+            found = locator.locate(rep.pdf_path, rep.page_count)
         except Exception as exc:  # noqa: BLE001
             _stuck(db, rep, "locating", exc)
             return False
-        if not pages:
-            # Không định vị được → đọc CẢ CUỐN (nén nhỏ). Tốn hơn (~0,3–0,5 USD) nhưng không chịu thua.
-            logger.info("%s %s: không định vị được trang — sẽ đọc cả cuốn", rep.broker, rep.quarter)
-            rep.note_pages = "all"
-            db.commit()
-            return True
-        pages = locator.expand(pages, rep.page_count)
-    rep.note_pages = ",".join(str(p) for p in pages)
+        rep.note_pages = ",".join(str(p) for p in locator.expand(found, rep.page_count)) if found else "all"
+    else:
+        rep.note_pages = "all"
     db.commit()
     return True
 
@@ -95,6 +98,13 @@ def step_extract(db, rep: Report) -> bool:
     except Exception as exc:  # noqa: BLE001
         _stuck(db, rep, "extracting", exc)
         return False
+    # Model trả về trang nguồn (đếm trong tài liệu đã gửi). Đọc cả cuốn → trùng số trang gốc;
+    # đọc theo lát → ánh xạ ngược về số trang gốc. Màn duyệt dùng để hiện ảnh đúng trang.
+    src = [int(p) for p in (data.get("source_pages") or []) if isinstance(p, (int, float)) and p >= 1]
+    if src:
+        if pages:
+            src = [pages[p - 1] for p in src if p - 1 < len(pages)]
+        rep.note_pages = ",".join(str(p) for p in sorted(set(src))[:8])
     apply_extract(db, rep, data, model=extractor.EXTRACT_MODEL)
     return True
 

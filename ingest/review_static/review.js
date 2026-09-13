@@ -29,8 +29,8 @@
 
   // ---------------------------------------------------------------- hàng đợi
   const STEP_TEXT = {
-    queued: "Đang chờ đến lượt", fetching: "Đang tải PDF từ trang IR", locating: "Đang tìm trang thuyết minh",
-    extracting: "Đang đọc ảnh bằng Claude (1–3 phút)", validating: "Đang đối chiếu 4 kiểm tra",
+    queued: "Đang chờ đến lượt", fetching: "Đang tải PDF từ trang IR", locating: "Đang dựng thẳng và nén ảnh",
+    extracting: "Claude đang đọc cả cuốn (2–5 phút)", validating: "Đang đối chiếu 4 kiểm tra",
   };
   function progHtml(rep) {
     const bars = [];

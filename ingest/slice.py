@@ -79,7 +79,7 @@ def slice_pages(pdf: str | Path, pages: list[int]) -> bytes:
     return _raster_pdf(pdf, pages, dpi=150, quality=70)
 
 
-def compact_pdf(pdf: str | Path, dpi: int = 90, quality: int = 55) -> bytes:
+def compact_pdf(pdf: str | Path, dpi: int = 100, quality: int = 55) -> bytes:
     """TOÀN BỘ tài liệu, ảnh nhỏ — dùng khi không định vị được trang thuyết minh.
     58 trang ở 90 DPI JPEG ≈ 4–6 MB, Opus đọc được cả cuốn trong một lần."""
     with pymupdf.open(pdf) as doc:

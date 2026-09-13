@@ -54,9 +54,11 @@ _SCHEMA = {
                 "additionalProperties": False,
             },
         },
+        "source_pages": {"type": "array", "items": {"type": "integer"},
+                         "description": "Số thứ tự (1-based, theo thứ tự trang trong tài liệu gửi kèm) của các trang chứa bảng đã bóc"},
         "notes": {"type": "string", "description": "Ghi chú ngắn cho người duyệt: cột nào thiếu, chỗ nào mờ"},
     },
-    "required": ["unit_multiplier", "rows", "totals", "notes"],
+    "required": ["unit_multiplier", "rows", "totals", "source_pages", "notes"],
     "additionalProperties": False,
 }
 
@@ -83,7 +85,8 @@ Quy tắc bắt buộc:
 4. Ô trống, gạch ngang, hoặc mờ không đọc được → null. TUYỆT ĐỐI KHÔNG suy đoán số.
 5. raw_label giữ nguyên văn (kể cả lỗi chính tả) để người duyệt đối chiếu với ảnh.
 6. confidence: 1.0 nếu đọc rõ; giảm khi ảnh mờ, số bị che, hoặc cột bị lệch hàng.
-7. Ghi vào notes: bảng nào thiếu cột số lượng, cột nào chỉ có giá trị hợp lý, chỗ nào nghi ngờ."""
+7. source_pages: số thứ tự các trang (đếm từ 1 theo thứ tự trong tài liệu gửi kèm) chứa bảng đã bóc.
+8. Ghi vào notes: bảng nào thiếu cột số lượng, cột nào chỉ có giá trị hợp lý, chỗ nào nghi ngờ."""
 
 
 def extract(pdf: str, pages: list[int] | None, symbol: str, quarter: str) -> dict:
@@ -94,7 +97,9 @@ def extract(pdf: str, pages: list[int] | None, symbol: str, quarter: str) -> dic
         model=EXTRACT_MODEL,
         max_tokens=16000,
         thinking={"type": "adaptive"},
-        output_config={"effort": "high", "format": {"type": "json_schema", "schema": _SCHEMA}},
+        # effort medium: đây là việc CHÉP SỐ từ ảnh, không phải suy luận; high tốn gấp đôi token ra mà
+        # không đọc đúng hơn (đo trên 11 báo cáo Q2/2026). 4 kiểm tra đối chiếu mới là lưới an toàn.
+        output_config={"effort": "medium", "format": {"type": "json_schema", "schema": _SCHEMA}},
         messages=[{
             "role": "user",
             "content": [
