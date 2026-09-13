@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T18:02:52+07:00",
+ "generated_at": "2026-09-13T18:03:17+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -902,7 +902,7 @@
    "broker": "HCM",
    "quarter": "2026Q2",
    "stmt_type": "rieng",
-   "approved_at": "2026-09-13T18:02:52",
+   "approved_at": "2026-09-13T18:03:17",
    "source_url": "https://storage.googleapis.com/cweb-p-media/hsc-cweb-2/BCTC_HSC_Q2_2026_VIE_compressed_a78d5c6219/BCTC_HSC_Q2_2026_VIE_compressed_a78d5c6219.pdf",
    "note_pages": "36,37,38,39",
    "totals": {
