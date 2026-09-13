@@ -7,4 +7,4 @@ ingest.db
 server.log
 
 # PDF BCTC nặng 17–38 MB mỗi file, không bao giờ đưa lên repo.
-data/
+/data/

@@ -1,24 +1,255 @@
 {
-  "_source": "Chép tay từ BCTC riêng SHS Q2/2026, thuyết minh 7.3.5 trang 24, cột 30/06/2026. Dùng làm fixture khi chưa có khoá API và để test validate.",
-  "unit_multiplier": 1,
-  "rows": [
-    {"asset_class": "FVTPL", "ticker": "CTG", "raw_label": "CTG", "kind": "listed_stock", "quantity": null, "cost_value": 128798657681, "fair_value": 123937768150, "confidence": 0.95},
-    {"asset_class": "FVTPL", "ticker": "HPG", "raw_label": "HPG", "kind": "listed_stock", "quantity": null, "cost_value": 133374803278, "fair_value": 127008300000, "confidence": 0.95},
-    {"asset_class": "FVTPL", "ticker": "HCM", "raw_label": "HCM", "kind": "listed_stock", "quantity": null, "cost_value": 22201451920, "fair_value": 32640000000, "confidence": 0.95},
-    {"asset_class": "FVTPL", "ticker": "MWG", "raw_label": "MWG", "kind": "listed_stock", "quantity": null, "cost_value": 176058433453, "fair_value": 169141170000, "confidence": 0.95},
-    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Cổ phiếu khác", "kind": "other", "quantity": null, "cost_value": 2584696993423, "fair_value": 2783562333363, "confidence": 0.9},
-    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Trái phiếu", "kind": "bond", "quantity": null, "cost_value": 8094052576267, "fair_value": 8030665018788, "confidence": 0.9},
-    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Chứng chỉ quỹ", "kind": "fund", "quantity": null, "cost_value": 40000000000, "fair_value": 41911058868, "confidence": 0.9},
-    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Chứng khoán ủy thác đầu tư", "kind": "other", "quantity": null, "cost_value": 24590489655, "fair_value": 22805000000, "confidence": 0.85},
-    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Công cụ thị trường tiền tệ", "kind": "deposit", "quantity": null, "cost_value": 2000000000, "fair_value": 2000000000, "confidence": 0.9},
-    {"asset_class": "AFS", "ticker": "SHB", "raw_label": "SHB", "kind": "listed_stock", "quantity": null, "cost_value": 275238748169, "fair_value": 910714754550, "confidence": 0.95},
-    {"asset_class": "AFS", "ticker": "TCD", "raw_label": "TCD", "kind": "listed_stock", "quantity": null, "cost_value": 200000000000, "fair_value": 24591600000, "confidence": 0.95},
-    {"asset_class": "AFS", "ticker": null, "raw_label": "Cổ phiếu khác", "kind": "other", "quantity": null, "cost_value": 455317573155, "fair_value": 482700130000, "confidence": 0.9}
-  ],
-  "totals": [
-    {"asset_class": "FVTPL", "label": "FVTPL", "cost_value": 11205773607677, "fair_value": 11333670649169},
-    {"asset_class": "FVTPL", "label": "Cổ phiếu", "cost_value": 3045130341755, "fair_value": 3236289571513},
-    {"asset_class": "AFS", "label": "AFS", "cost_value": 930556321324, "fair_value": 1418006484550}
-  ],
-  "notes": "Bảng không có cột số lượng — chỉ có Giá mua và Giá trị thị trường. Hai nhóm cột 30/06/2026 và 01/01/2026, đã lấy cột 30/06/2026. Phần 'Cổ phiếu khác' chiếm phần lớn FVTPL, không nêu tên mã."
+ "_source": "Kết quả claude-opus-5 đọc trang 23–24 BCTC riêng SHS Q2/2026 (13/09/2026, 68 giây, ~5.7k token vào / 6.2k ra). Đã qua 4 kiểm tra đối chiếu: khớp dòng Cộng 0,00%, AFS và HTM khớp VNDirect từng đồng. Bản chép tay trước đó sai 2 chữ số (HPG, ủy thác) — model đúng, kiểm tra tổng đã lộ ra.",
+ "unit_multiplier": 1,
+ "rows": [
+  {
+   "asset_class": "FVTPL",
+   "ticker": "CTG",
+   "raw_label": "CTG",
+   "kind": "listed_stock",
+   "quantity": null,
+   "cost_value": 128798657681,
+   "fair_value": 123937768150,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": "HPG",
+   "raw_label": "HPG",
+   "kind": "listed_stock",
+   "quantity": null,
+   "cost_value": 133374805278,
+   "fair_value": 127008300000,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": "HCM",
+   "raw_label": "HCM",
+   "kind": "listed_stock",
+   "quantity": null,
+   "cost_value": 22201451920,
+   "fair_value": 32640000000,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": "MWG",
+   "raw_label": "MWG",
+   "kind": "listed_stock",
+   "quantity": null,
+   "cost_value": 176058433453,
+   "fair_value": 169141170000,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": null,
+   "raw_label": "Cổ phiếu khác",
+   "kind": "other",
+   "quantity": null,
+   "cost_value": 2584696993423,
+   "fair_value": 2783562333363,
+   "confidence": 0.9
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": null,
+   "raw_label": "Trái phiếu",
+   "kind": "bond",
+   "quantity": null,
+   "cost_value": 8094052576267,
+   "fair_value": 8030665018788,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": null,
+   "raw_label": "Chứng chỉ quỹ",
+   "kind": "fund",
+   "quantity": null,
+   "cost_value": 40000000000,
+   "fair_value": 41911058868,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": null,
+   "raw_label": "Chứng khoán ủy thác đầu tư",
+   "kind": "other",
+   "quantity": null,
+   "cost_value": 24590689655,
+   "fair_value": 22805000000,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "FVTPL",
+   "ticker": null,
+   "raw_label": "Công cụ thị trường tiền tệ",
+   "kind": "other",
+   "quantity": null,
+   "cost_value": 2000000000,
+   "fair_value": 2000000000,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "AFS",
+   "ticker": "SHB",
+   "raw_label": "SHB",
+   "kind": "listed_stock",
+   "quantity": null,
+   "cost_value": 275238748169,
+   "fair_value": 910714754550,
+   "confidence": 0.95
+  },
+  {
+   "asset_class": "AFS",
+   "ticker": "TCD",
+   "raw_label": "TCD",
+   "kind": "listed_stock",
+   "quantity": null,
+   "cost_value": 200000000000,
+   "fair_value": 24591600000,
+   "confidence": 0.9
+  },
+  {
+   "asset_class": "AFS",
+   "ticker": null,
+   "raw_label": "Cổ phiếu khác",
+   "kind": "other",
+   "quantity": null,
+   "cost_value": 455317573155,
+   "fair_value": 482700130000,
+   "confidence": 0.9
+  },
+  {
+   "asset_class": "HTM",
+   "ticker": null,
+   "raw_label": "Trái phiếu niêm yết",
+   "kind": "bond",
+   "quantity": null,
+   "cost_value": null,
+   "fair_value": null,
+   "confidence": 1.0
+  },
+  {
+   "asset_class": "HTM",
+   "ticker": null,
+   "raw_label": "Trái phiếu chưa niêm yết",
+   "kind": "bond",
+   "quantity": null,
+   "cost_value": 749808987855,
+   "fair_value": 749808987855,
+   "confidence": 1.0
+  },
+  {
+   "asset_class": "HTM",
+   "ticker": null,
+   "raw_label": "Công cụ thị trường tiền tệ",
+   "kind": "other",
+   "quantity": null,
+   "cost_value": null,
+   "fair_value": null,
+   "confidence": 1.0
+  }
+ ],
+ "totals": [
+  {
+   "asset_class": "FVTPL",
+   "label": "Cộng FVTPL (7.3.1)",
+   "cost_value": 11205773607677,
+   "fair_value": 11333670649169
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "FVTPL (dòng tổng 7.3.5)",
+   "cost_value": 11205773607677,
+   "fair_value": 11333670649169
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "Cổ phiếu (tổng phụ 7.3.5, có dòng con CTG/HPG/HCM/MWG/Cổ phiếu khác)",
+   "cost_value": 3045130341755,
+   "fair_value": 3236289571513
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Cổ phiếu niêm yết",
+   "cost_value": 2442548568562,
+   "fair_value": 2740944800550
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Cổ phiếu giao dịch trên UPCOM",
+   "cost_value": 168112287118,
+   "fair_value": 197950921200
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Cổ phiếu chưa niêm yết",
+   "cost_value": 434469486075,
+   "fair_value": 297393849763
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Ủy thác đầu tư",
+   "cost_value": 24590689655,
+   "fair_value": 22805000000
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Chứng chỉ quỹ",
+   "cost_value": 40000000000,
+   "fair_value": 41911058868
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Trái phiếu niêm yết",
+   "cost_value": 1604792215167,
+   "fair_value": 1541404657688
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Trái phiếu chưa niêm yết",
+   "cost_value": 6489260361100,
+   "fair_value": 6489260361100
+  },
+  {
+   "asset_class": "FVTPL",
+   "label": "[7.3.1 chi tiết] Công cụ thị trường tiền tệ",
+   "cost_value": 2000000000,
+   "fair_value": 2000000000
+  },
+  {
+   "asset_class": "AFS",
+   "label": "Cộng AFS (7.3.2)",
+   "cost_value": 930556321324,
+   "fair_value": 1418006484550
+  },
+  {
+   "asset_class": "AFS",
+   "label": "AFS (dòng tổng 7.3.5)",
+   "cost_value": 930556321324,
+   "fair_value": 1418006484550
+  },
+  {
+   "asset_class": "AFS",
+   "label": "Cổ phiếu (tổng phụ 7.3.5, có dòng con SHB/TCD/Cổ phiếu khác)",
+   "cost_value": 930556321324,
+   "fair_value": 1418006484550
+  },
+  {
+   "asset_class": "AFS",
+   "label": "[7.3.2 chi tiết] Cổ phiếu niêm yết",
+   "cost_value": 930556321324,
+   "fair_value": 1418006484550
+  },
+  {
+   "asset_class": "HTM",
+   "label": "Cộng HTM (7.3.3)",
+   "cost_value": 749808987855,
+   "fair_value": 749808987855
+  }
+ ],
+ "notes": "Nguồn: trang 19 (7.3.1 FVTPL, 7.3.2 AFS, 7.3.3 HTM) và trang 20 (7.3.5 chi tiết theo mã, kỳ 30/06/2026). Để tránh đếm hai lần, rows lấy theo bảng 7.3.5 (chi tiết nhất, có mã CTG/HPG/HCM/MWG cho FVTPL và SHB/TCD cho AFS); các dòng phân loại theo tình trạng niêm yết của 7.3.1/7.3.2 được đưa vào totals với tiền tố [7.3.1/7.3.2 chi tiết] chỉ để đối chiếu, KHÔNG cộng vào rows. Ở 7.3.5, cột 'Giá mua' được map sang cost_value, 'Giá trị thị trường' sang fair_value (bằng 'Giá trị đánh giá lại'). Cả hai bảng đều KHÔNG có cột số lượng → quantity = null toàn bộ. Các ô gạch ngang (AFS: cổ phiếu chưa niêm yết, trái phiếu; HTM: trái phiếu niêm yết, công cụ TTTT) để null. 'Cổ phiếu khác' của FVTPL gồm cả cổ phiếu niêm yết/UPCOM/chưa niêm yết nên đặt kind='other'. Dòng tổng chung cuối bảng 7.3.5 (12.136.329.929.001 / 12.751.677.133.719) là tổng FVTPL+AFS, không thuộc một asset_class duy nhất nên không đưa vào totals. Ảnh scan rõ; độ tin cậy hơi giảm ở các dòng in nghiêng nhỏ của 7.3.5 (CTG/HPG/HCM/MWG/SHB/TCD) do cỡ chữ nhỏ."
 }

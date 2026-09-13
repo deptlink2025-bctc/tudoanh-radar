@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T11:54:06+07:00",
+ "generated_at": "2026-09-13T16:22:12+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -97,7 +97,7 @@
    "broker": "SHS",
    "quarter": "2026Q2",
    "stmt_type": "rieng",
-   "approved_at": "2026-09-13T11:54:06",
+   "approved_at": "2026-09-13T16:22:12",
    "source_url": "https://s3-storage.shs.com.vn/shs-website/VI_SHS_Bao_Cao_Tai_Chinh_Q2_2026_UB_034c3261d1.pdf",
    "note_pages": "23,24",
    "totals": {
@@ -127,7 +127,7 @@
      "is_listed": true,
      "quantity": 5451000.0,
      "quantity_source": "implied",
-     "cost_value": 133374803278.0,
+     "cost_value": 133374805278.0,
      "cost_source": "disclosed",
      "fair_value": 127008300000.0,
      "fair_source": "disclosed"
@@ -199,7 +199,7 @@
      "is_listed": false,
      "quantity": null,
      "quantity_source": "disclosed",
-     "cost_value": 24590489655.0,
+     "cost_value": 24590689655.0,
      "cost_source": "disclosed",
      "fair_value": 22805000000.0,
      "fair_source": "disclosed"
@@ -250,6 +250,42 @@
      "cost_value": 455317573155.0,
      "cost_source": "disclosed",
      "fair_value": 482700130000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 749808987855.0,
+     "cost_source": "disclosed",
+     "fair_value": 749808987855.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Công cụ thị trường tiền tệ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
      "fair_source": "disclosed"
     }
    ]

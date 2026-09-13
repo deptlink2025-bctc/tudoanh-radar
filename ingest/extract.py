@@ -28,7 +28,7 @@ _ROW = {
         "quantity": {"type": ["number", "null"]},
         "cost_value": {"type": ["number", "null"], "description": "Giá gốc, VND"},
         "fair_value": {"type": ["number", "null"], "description": "Giá trị hợp lý / giá thị trường, VND"},
-        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "confidence": {"type": "number", "description": "0–1: 1 nếu đọc rõ, giảm khi ảnh mờ hoặc cột lệch"},
     },
     "required": ["asset_class", "ticker", "raw_label", "kind", "quantity", "cost_value", "fair_value", "confidence"],
     "additionalProperties": False,

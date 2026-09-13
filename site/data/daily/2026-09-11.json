@@ -1,0 +1,151 @@
+{
+ "trade_date": "2026-09-11",
+ "generated_at": "2026-09-13T16:22:15+07:00",
+ "industry": {
+  "today_change": -25899094200.0,
+  "n_today": 1,
+  "vs_cost_change": 273057813899.0,
+  "size_total": 27432885244024.0,
+  "rollup": [],
+  "n_with_diff": 0,
+  "buy": 0,
+  "sell": 0
+ },
+ "alerts": [],
+ "brokers": [
+  {
+   "symbol": "AGR",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "BSI",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "CTS",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "DSE",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "FTS",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "HCM",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "MBS",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "ORS",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "SHS",
+   "quarter": "2026Q2",
+   "n_tracked": 6,
+   "today": {
+    "value": 1208729910400.0,
+    "prev_value": 1234629004600.0,
+    "change": -25899094200.0,
+    "pct": -2.097722806082214
+   },
+   "since_quarter": {
+    "change": -179303682300.0,
+    "pct": -12.917820090450327
+   },
+   "vs_cost": {
+    "cost": 935672096501.0,
+    "value": 1208729910400.0,
+    "change": 273057813899.0,
+    "pct": 29.183066901333877,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "SSI",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "TCX",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "VCI",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "VDS",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "VIX",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "VND",
+   "quarter": null,
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  }
+ ]
+}

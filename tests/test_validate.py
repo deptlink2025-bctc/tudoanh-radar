@@ -1,4 +1,4 @@
-"""4 kiểm tra đối chiếu trên fixture SHS Q2/2026 (chép tay từ trang 24 BCTC thật)."""
+"""4 kiểm tra đối chiếu trên fixture SHS Q2/2026 (kết quả claude-opus-5 đọc trang 23–24 BCTC thật)."""
 import json
 from pathlib import Path
 
@@ -17,8 +17,8 @@ def rows():
 
 def test_normalize_keeps_unnamed_lines():
     r = rows()
-    assert len(r) == 12
-    assert sum(1 for x in r if x["ticker"] == "") == 6      # cổ phiếu khác, trái phiếu, CCQ, ...
+    assert len(r) == 15
+    assert sum(1 for x in r if x["ticker"] == "") == 9      # cổ phiếu khác, trái phiếu, CCQ, HTM...
     assert all(x["cost_value"] is None or x["cost_value"] > 1e6 for x in r)
 
 
