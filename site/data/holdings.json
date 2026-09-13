@@ -1,94 +1,94 @@
 {
- "generated_at": "2026-09-13T17:27:44+07:00",
+ "generated_at": "2026-09-13T17:31:35+07:00",
  "brokers": [
   {
    "symbol": "AGR",
    "name": "Chứng khoán Agribank",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "BSI",
    "name": "Chứng khoán BIDV",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "CTS",
    "name": "Chứng khoán VietinBank",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "DSE",
    "name": "Chứng khoán DNSE",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "FTS",
    "name": "Chứng khoán FPT",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "HCM",
    "name": "Chứng khoán TP.HCM",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "MBS",
    "name": "Chứng khoán MB",
-   "floor": "",
+   "floor": "HNX",
    "enabled": true
   },
   {
    "symbol": "ORS",
    "name": "Chứng khoán Tiên Phong",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "SHS",
    "name": "Chứng khoán Sài Gòn Hà Nội",
-   "floor": "",
+   "floor": "HNX",
    "enabled": true
   },
   {
    "symbol": "SSI",
    "name": "Chứng khoán SSI",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "TCX",
    "name": "Chứng khoán Techcombank",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "VCI",
    "name": "Chứng khoán Vietcap",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "VDS",
    "name": "Chứng khoán Rồng Việt",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "VIX",
    "name": "Chứng khoán VIX",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   },
   {
    "symbol": "VND",
    "name": "Chứng khoán VNDIRECT",
-   "floor": "",
+   "floor": "HOSE",
    "enabled": true
   }
  ],
@@ -1460,6 +1460,167 @@
     "htm": 4515680620253.0
    },
    "holdings": []
+  },
+  {
+   "broker": "TCX",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T17:31:35",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY 2/TCX_Baocaotaichinh_Q2_2026.zip",
+   "note_pages": "all",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 100592059821282.0,
+    "st_fin_assets": 97067447204142.0,
+    "afs": 34558372365730.0,
+    "htm": 1588198577180.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết (không bao gồm cổ phiếu niêm yết cho hoạt động phòng ngừa rủi ro của chứng quyền)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 5766084987.0,
+     "cost_source": "disclosed",
+     "fair_value": 5952769600.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết cho hoạt động phòng ngừa rủi ro của chứng quyền",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 276518726166.0,
+     "cost_source": "disclosed",
+     "fair_value": 274731527550.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 13594967190.0,
+     "cost_source": "disclosed",
+     "fair_value": 15060000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng khoán khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 549500000.0,
+     "cost_source": "disclosed",
+     "fair_value": 220500000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2339336.0,
+     "cost_source": "disclosed",
+     "fair_value": 15207450.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 3968594.0,
+     "cost_source": "disclosed",
+     "fair_value": 3968594.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Trái phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2510344945330.0,
+     "cost_source": "disclosed",
+     "fair_value": 2512962050567.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Trái phiếu doanh nghiệp chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 29479716972939.0,
+     "cost_source": "disclosed",
+     "fair_value": 29466510710040.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2570427872765.0,
+     "cost_source": "disclosed",
+     "fair_value": 2570427872765.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 5511000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 8452556314.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn gốc trên 03 tháng và kỳ hạn còn lại không quá 12 tháng (i)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1588198577180.0,
+     "cost_source": "disclosed",
+     "fair_value": 1588198577180.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn gốc trên trên 12 tháng",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
   }
  ]
 }
