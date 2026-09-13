@@ -49,5 +49,11 @@
  },
  "known_subs": [
   "a75bfa12658a937e"
- ]
+ ],
+ "devices": {
+  "n": 1,
+  "source": "fallback",
+  "vapid": true,
+  "checked_at": "2026-09-13T19:31:11+07:00"
+ }
 }
