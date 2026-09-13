@@ -61,6 +61,11 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
         log.error("Chưa có data/holdings.json hoặc chưa có báo cáo nào đã chốt")
         return 2
 
+    # Máy mới đăng ký (địa chỉ chưa thấy bao giờ) → gửi ngay một thông báo chào mừng, TRƯỚC cả
+    # bước idempotent bên dưới, để người dùng chỉ cần "Re-run" là biết đường dây thông.
+    if not dry_run and not no_push:
+        _welcome_new_devices(st, now)
+
     cfg = settings.load()
     disabled = set(cfg.get("brokers_disabled") or [])
     brokers = [b for b in hold["brokers"] if b.get("enabled") and b["symbol"] not in disabled]
@@ -186,6 +191,22 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
     _dump(STATE, st)
     log.info("Xong: %d công ty, %d cảnh báo, push %s", len(out_brokers), len(hot_first), push_res)
     return 0
+
+
+def _welcome_new_devices(st: dict, now: datetime) -> None:
+    subs, src = push.subscriptions()
+    if not subs or not push.configured():
+        return
+    known = set(st.get("known_subs") or [])
+    new = [s for s in subs if push._sub_id(s) not in known]
+    if new:
+        payload = {"kind": "welcome", "title": "Đã kết nối — máy này sẽ nhận cảnh báo",
+                   "body": "Cảnh báo sau phiên 15:20 các ngày T2–T6, nhịp tim mỗi thứ Hai.", "url": "./#alert", "tag": "td-welcome"}
+        r = push.send(payload, new)
+        log.info("Chào mừng %d máy mới (nguồn %s): %s", len(new), src, r)
+        st["welcome"] = {"at": now.isoformat(timespec="seconds"), **r}
+    st["known_subs"] = sorted(known | {push._sub_id(s) for s in subs})
+    _dump(STATE, st)
 
 
 def _alerts_last_week(now: datetime) -> int:
