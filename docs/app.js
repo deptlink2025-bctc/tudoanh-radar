@@ -277,11 +277,26 @@
       catch (_) { $("subTxt").select(); document.execCommand("copy"); showToast("Đã sao chép", ""); }
     });
   }
+  const swReady = () => Promise.race([
+    navigator.serviceWorker.ready,
+    new Promise((_, rej) => setTimeout(() => rej(new Error("Phần chạy nền (service worker) chưa sẵn sàng — đóng hẳn app, mở lại rồi bấm lần nữa")), 8000)),
+  ]);
   $("pushBtn").addEventListener("click", async () => {
+    const st = $("pushState"), txt = st.querySelector("span:last-child"), btn = $("pushBtn");
+    const say = (s) => { txt.textContent = s; };
+    btn.disabled = true;
     try {
+      if (Notification.permission === "denied") {
+        say("Điện thoại đang CHẶN thông báo của app này. Mở Cài đặt → Ứng dụng → TuDoanh → Thông báo → bật, rồi bấm lại.");
+        return;
+      }
+      say("Đang xin quyền thông báo… (nếu hiện hộp thoại, bấm Cho phép)");
       const perm = await Notification.requestPermission();
-      if (perm !== "granted") { alert("Anh chưa cho phép thông báo. Vào cài đặt trình duyệt để bật."); return; }
-      const reg = await navigator.serviceWorker.ready;
+      if (perm !== "granted") { say("Anh chưa cho phép. Bấm lại và chọn Cho phép; nếu không thấy hộp thoại, bật trong Cài đặt → Ứng dụng → TuDoanh → Thông báo."); return; }
+      say("Đang chuẩn bị phần chạy nền…");
+      if (!navigator.serviceWorker.controller) { try { await navigator.serviceWorker.register("sw.js"); } catch (_) { /* thử tiếp */ } }
+      const reg = await swReady();
+      say("Đang tạo địa chỉ nhận với Google…");
       let sub = await reg.pushManager.getSubscription();
       if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToU8(CFG.VAPID_PUBLIC) });
       if (CFG.WORKER_URL) {
@@ -291,8 +306,10 @@
       } else {
         showToast("Đã tạo địa chỉ nhận", "Sao chép đoạn mã bên dưới và dán vào GitHub — một lần cho máy này.");
       }
-      pushStatus();
-    } catch (err) { alert("Không đăng ký được: " + err.message); }
+      await pushStatus();
+    } catch (err) {
+      say("Không đăng ký được: " + (err && err.message ? err.message : err) + " — chụp màn hình dòng này gửi lại.");
+    } finally { btn.disabled = false; }
   });
   $("testBtn").addEventListener("click", async () => {
     try {
