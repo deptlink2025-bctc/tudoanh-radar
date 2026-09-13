@@ -50,6 +50,8 @@ def write() -> dict:
     data = build()
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    from . import stamp  # đóng dấu phiên bản giao diện mỗi lần xuất
+    stamp.stamp()
     return data
 
 
@@ -59,7 +61,7 @@ def push(message: str = "") -> str:
     # Máy chưa cấu hình user.name/email thì git commit thất bại im lặng → luôn truyền danh tính công cụ.
     git = ["git", "-c", "user.name=TuDoanh Radar", "-c", "user.email=tudoanh-radar@local"]
     try:
-        subprocess.run(git + ["add", str(OUT.relative_to(ROOT))], cwd=ROOT, check=True, capture_output=True)
+        subprocess.run(git + ["add", str(OUT.relative_to(ROOT)), "docs/index.html", "docs/app.js"], cwd=ROOT, check=True, capture_output=True)
         r = subprocess.run(git + ["commit", "-m", msg], cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="ignore")
         if r.returncode != 0:
             if "nothing to commit" in (r.stdout + r.stderr):

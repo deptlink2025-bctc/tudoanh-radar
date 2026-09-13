@@ -294,7 +294,7 @@
       const perm = await Notification.requestPermission();
       if (perm !== "granted") { say("Anh chưa cho phép. Bấm lại và chọn Cho phép; nếu không thấy hộp thoại, bật trong Cài đặt → Ứng dụng → TuDoanh → Thông báo."); return; }
       say("Đang chuẩn bị phần chạy nền…");
-      if (!navigator.serviceWorker.controller) { try { await navigator.serviceWorker.register("sw.js"); } catch (_) { /* thử tiếp */ } }
+      if (!navigator.serviceWorker.controller) { try { await navigator.serviceWorker.register("sw.js?v=8b8cca2f"); } catch (_) { /* thử tiếp */ } }
       const reg = await swReady();
       say("Đang tạo địa chỉ nhận với Google…");
       let sub = await reg.pushManager.getSubscription();
@@ -360,7 +360,7 @@
   }
   window.addEventListener("hashchange", applyHash);
 
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=8b8cca2f").catch(() => {});
   load().then(() => { applyHash(); pushStatus(); });
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") load(); });
 })();
