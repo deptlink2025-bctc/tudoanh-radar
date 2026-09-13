@@ -39,5 +39,15 @@
  "dnse_error": "",
  "push": {
   "skipped": true
- }
+ },
+ "welcome": {
+  "at": "2026-09-13T19:28:57+07:00",
+  "sent": 1,
+  "gone": 0,
+  "failed": 0,
+  "errors": []
+ },
+ "known_subs": [
+  "a75bfa12658a937e"
+ ]
 }
