@@ -1,6 +1,0 @@
-# Cloudflare Pages: chống cache — bài học production của KingStock (điện thoại giữ index.html cũ
-# rồi gọi app.js đã đổi). HTML/JS/CSS/JSON luôn kiểm tra lại; ảnh icon cache 1 tuần.
-/*
-  Cache-Control: no-cache
-/icons/*
-  Cache-Control: public, max-age=604800

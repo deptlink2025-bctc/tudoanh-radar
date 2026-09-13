@@ -14,8 +14,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 PDF_DIR = DATA_DIR / "pdf"
 PAGES_DIR = DATA_DIR / "pages"
-# JSON mà giao diện tĩnh đọc — phải nằm trong site/ vì Cloudflare Pages chỉ phục vụ một thư mục.
-SITE_DATA = ROOT / "site" / "data"
+# JSON mà giao diện tĩnh đọc — nằm trong docs/ vì GitHub Pages phục vụ thư mục /docs (cách BCTC Radar).
+SITE_DATA = ROOT / "docs" / "data"
 
 # utf-8-sig: Notepad/PowerShell ghi BOM ở đầu file; thiếu cái này thì biến đầu tiên
 # thành "﻿ANTHROPIC_API_KEY" và mọi thứ chết im lặng (bài học KingStock).

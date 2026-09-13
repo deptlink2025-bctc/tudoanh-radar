@@ -3,15 +3,15 @@
 App theo dõi danh mục tự doanh của các công ty chứng khoán niêm yết: cổ phiếu nắm giữ, giá trị
 kết phiên hôm nay, lãi/lỗ so giá vốn, thay đổi theo quý, cảnh báo cuối ngày lên điện thoại.
 
-**Không có máy chủ.** Chi phí vận hành ≈ 45.000 đ/quý (Claude đọc ảnh BCTC), còn lại 0 đ.
+**Không có máy chủ.** Chi phí vận hành ≈ 130.000 đ/quý (Claude đọc ảnh BCTC, ~0,3 USD/báo cáo × 15), còn lại 0 đ.
 
 ```
 MÁY TÍNH (4 lần/năm)      start-review.bat → tải PDF → Claude đọc ảnh → đối chiếu → ANH DUYỆT → chốt
                                                                                         ↓ git push
-GITHUB ACTIONS (15:20 T2–T6)   giá DNSE → tính danh mục → 4 quy tắc → Web Push → commit site/data/*.json
+GITHUB ACTIONS (15:20 T2–T6)   giá DNSE → tính danh mục → 4 quy tắc → Web Push → commit docs/data/*.json
                                                                                         ↓
-CLOUDFLARE PAGES               giao diện điện thoại (site/) đọc site/data/latest.json
-CLOUDFLARE WORKER              nhận đăng ký thông báo + cất ngưỡng cảnh báo (KV)
+GITHUB PAGES                   giao diện điện thoại (docs/) đọc docs/data/latest.json
+(tuỳ chọn) CLOUDFLARE WORKER  nhận đăng ký thông báo một chạm + cất ngưỡng cảnh báo
 ```
 
 Vì sao phải đọc ảnh: BCTC quý của CTCK là **PDF scan** không có text (đã kiểm chứng VCI, SSI,
@@ -23,8 +23,8 @@ SHS Q2/2026). Chi tiết từng mã không có ở API nào. Xem `docs` trong k�
 |---|---|---|
 | `ingest/` | máy tính | tải PDF, tìm trang, đọc ảnh (Claude), đối chiếu, màn hình duyệt (`localhost:8100`), xuất `holdings.json` |
 | `job/` | GitHub Actions | giá, định giá, so quý, cảnh báo, push |
-| `site/` | Cloudflare Pages | PWA điện thoại; `site/data/` là dữ liệu job ghi |
-| `worker/` | Cloudflare Worker | 50 dòng nhận đăng ký push + cài đặt |
+| `docs/` | GitHub Pages | PWA điện thoại; `docs/data/` là dữ liệu job ghi |
+| `worker/` | Cloudflare Worker (tuỳ chọn) | 50 dòng nhận đăng ký push + cài đặt |
 | `common/` | cả hai | client DNSE, VNDirect finfo, quý, cấu hình |
 | `tests/` | máy tính | `pytest`, không cần mạng |
 
@@ -38,46 +38,40 @@ SHS Q2/2026). Chi tiết từng mã không có ở API nào. Xem `docs` trong k�
 ## Mỗi quý (khoảng ngày 20–30 sau khi hết quý)
 
 1. Mở `start-review.bat`, bấm **Bắt đầu quý này**. Máy tự tải PDF, tìm trang, đọc ảnh, đối chiếu
-   cho mọi công ty đang bật (~1–2 phút/công ty, chạy nền).
+   cho mọi công ty đang bật (~2–5 phút/công ty, chạy nền). Nguồn PDF: trang IR riêng (SSI, SHS, HCM) hoặc kho Vietstock cho mọi mã.
 2. Dòng nào **Chờ anh duyệt** → bấm **Duyệt**: bên trái là ảnh trang gốc, bên phải là bảng.
    Sửa ô sai (mang nhãn *nhập tay*), bỏ dòng thừa, bấm **Chốt báo cáo**. App tự xuất
-   `site/data/holdings.json` và `git push`.
+   `docs/data/holdings.json` và `git push`.
 3. Dòng **Kẹt**: dán URL PDF (trang IR đổi cấu trúc) hoặc gõ số trang (không tìm được bảng), bấm Chạy.
-4. Công ty không thuyết minh từng mã (SSI): chốt với 0 dòng — app chỉ giữ số tổng từ VNDirect.
+4. Công ty không nêu tên mã (AGR, DSE, MBS, ORS, TCX, VIX…): chỉ có các dòng nhóm — app hiện quy mô và số tổng, "hôm nay" ghi không tính được.
 
 Cần 2 quý liên tiếp đã chốt thì tab **Thay đổi** mới so sánh được.
 
-## Deploy lần đầu (một lần, ~30 phút)
+## Deploy lần đầu — cách GitHub Pages, giống BCTC Radar (không cần Cloudflare, không dòng lệnh)
 
-### GitHub
-1. Tạo repo **private**, push toàn bộ thư mục này lên nhánh `main`.
-2. Sinh khoá thông báo: `venv\Scripts\python -m job.gen_vapid` → 3 dòng.
-3. Repo → Settings → Secrets and variables → Actions → thêm:
-   `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `WORKER_URL`, `WORKER_TOKEN`
-   (và `PUSH_SUBS_FALLBACK` để trống).
-4. Actions → bật workflow `daily`. Bấm **Run workflow** một lần để kiểm tra.
+1. **Tạo repo public** tên `tudoanh-radar` trên github.com (Repositories → New → Public → Create).
+   Public vì GitHub Pages miễn phí chỉ cho repo public — code và số liệu bóc từ BCTC công khai;
+   mọi khoá nằm trong Secrets, không nằm trong repo.
+2. **Đẩy code lên** — chạy hai lệnh trong PowerShell (lần đầu Windows mở trình duyệt hỏi đăng nhập GitHub):
+   ```
+   cd "C:\Claude code	udoanh-radar"
+   git remote add origin https://github.com/<TÊN-GITHUB>/tudoanh-radar.git
+   git push -u origin master:main
+   ```
+3. **Bật Pages**: repo → Settings → Pages → *Build and deployment*: Source = *Deploy from a branch*,
+   Branch = `main`, thư mục **`/docs`** → Save. Vài phút sau có link `https://<tên>.github.io/tudoanh-radar/`.
+4. **Nạp khoá**: Settings → Secrets and variables → Actions → *New repository secret*, tạo 3 cái
+   (giá trị lấy trong `data/deploy_secrets.txt` trên máy tính): `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`.
+5. **Bật job**: tab Actions → *I understand my workflows, go ahead and enable them* → workflow `daily` → *Run workflow* một lần.
+6. **Điện thoại**: mở link Pages bằng Chrome → ⋮ → *Cài đặt ứng dụng* → mở từ màn hình chính → tab Cảnh báo →
+   **Bật thông báo** → cho phép → bấm **Sao chép** đoạn mã hiện ra → về máy tính tạo Secret thứ 4:
+   `PUSH_SUBS_FALLBACK` = đoạn mã đó (thêm máy thứ hai thì nối hai đoạn trong cùng một mảng `[ {...}, {...} ]`).
+7. **Thử**: Actions → `daily` → *Run workflow* → `test_push` = true → điện thoại rung sau ~1 phút.
 
-### Cloudflare Worker (miễn phí, không cần thẻ)
-```
-cd worker
-npx wrangler login
-npx wrangler kv namespace create SUBS        # dán id vào wrangler.toml
-npx wrangler secret put TOKEN                # chuỗi bất kỳ dài, dùng lại làm WORKER_TOKEN trên GitHub
-npx wrangler deploy                          # in ra https://tudoanh-radar.<tên>.workers.dev
-```
-Sửa `ALLOW_ORIGIN` trong `wrangler.toml` thành địa chỉ Pages (bước dưới) rồi deploy lại.
+Ngưỡng cảnh báo: sửa `docs/data/settings.json` (xem `job/settings.py` cho các khoá), commit & push.
 
-### Cloudflare Pages
-Workers & Pages → Create → Pages → Connect to Git → chọn repo → Build output directory: `site`
-(không có lệnh build). Địa chỉ dạng `https://tudoanh-radar.pages.dev`. Mỗi lần job commit
-`site/data/*.json`, Pages tự deploy lại.
-
-### Nối giao diện
-Sửa `site/config.js`: `VAPID_PUBLIC` = khoá public ở bước 2, `WORKER_URL` = địa chỉ Worker. Commit.
-
-### Trên điện thoại
-Mở địa chỉ Pages bằng Chrome → menu → **Thêm vào màn hình chính** → mở app → tab Cảnh báo →
-**Bật thông báo trên máy này** → **Gửi thử**. Thông báo thật đến trong ~1 phút.
+### Nâng cấp tuỳ chọn: Cloudflare Worker (bật thông báo một chạm, thanh trượt ngưỡng lưu được)
+Xem `worker/`. Deploy xong điền `WORKER_URL` vào `docs/config.js` và thêm Secrets `WORKER_URL`, `WORKER_TOKEN`.
 
 ## Chạy tay khi cần
 
@@ -100,8 +94,7 @@ venv\Scripts\python -m pytest tests -q
 
 ## Rủi ro đã biết
 
-- DNSE và VNDirect finfo là API không chính thức. Lỗi → `site/data/state.json` ghi `dnse_error`,
+- DNSE và VNDirect finfo là API không chính thức. Lỗi → `docs/data/state.json` ghi `dnse_error`,
   giao diện hiện chấm đỏ, thứ Hai không có nhịp tim.
-- Trang IR của CTCK đổi cấu trúc → kẹt bước tải → dán URL tay. Chỉ SHS, SSI đã xác minh; các URL
-  khác trong `ingest/brokers.py` cần sửa dần khi gặp.
+- Web IR của CTCK phần lớn dựng bằng JS hoặc chặn máy → dùng Vietstock (`ingest/vietstock.py`). Vietstock đổi API thì kẹt bước tải → dán URL PDF tay.
 - GitHub cron có thể trễ 10–30 phút; có cron dự phòng 08:50 UTC.

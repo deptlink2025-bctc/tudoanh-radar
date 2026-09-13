@@ -243,14 +243,39 @@
 
   // ---------------------------------------------------------------- push
   const b64ToU8 = (s) => { const p = "=".repeat((4 - s.length % 4) % 4); const b = atob((s + p).replace(/-/g, "+").replace(/_/g, "/")); return Uint8Array.from(b, (c) => c.charCodeAt(0)); };
+  /* Hai chế độ đăng ký thông báo:
+     - Có Worker (CFG.WORKER_URL): bấm Bật là xong, địa chỉ tự gửi lên kho.
+     - Không Worker (cách GitHub Pages như BCTC Radar): bấm Bật → hiện đoạn mã → anh dán vào
+       GitHub Secret PUSH_SUBS_FALLBACK một lần mỗi máy. Job đọc Secret đó để gửi. */
   async function pushStatus() {
     const st = $("pushState"), txt = st.querySelector("span:last-child");
     if (!("serviceWorker" in navigator) || !("PushManager" in window)) { txt.textContent = "Trình duyệt này không hỗ trợ thông báo đẩy"; $("pushBtn").disabled = true; return; }
-    if (!CFG.VAPID_PUBLIC || !CFG.WORKER_URL) { txt.textContent = "Chưa cấu hình VAPID_PUBLIC / WORKER_URL trong config.js"; $("pushBtn").disabled = true; return; }
+    if (!CFG.VAPID_PUBLIC) { txt.textContent = "Chưa có VAPID_PUBLIC trong config.js"; $("pushBtn").disabled = true; return; }
     const reg = await navigator.serviceWorker.ready;
     const sub = await reg.pushManager.getSubscription();
-    if (sub) { st.classList.add("on"); txt.textContent = "Máy này đã đăng ký · máy chủ tạm của GitHub có thể đánh thức kể cả khi app đóng"; $("pushBtn").textContent = "Đăng ký lại"; $("testBtn").hidden = false; }
-    else { st.classList.remove("on"); txt.textContent = "Máy này chưa đăng ký nhận thông báo"; }
+    if (sub) {
+      st.classList.add("on");
+      txt.textContent = CFG.WORKER_URL ? "Máy này đã đăng ký · máy chủ tạm của GitHub có thể đánh thức kể cả khi app đóng"
+        : "Máy này đã tạo địa chỉ nhận · đảm bảo đoạn mã bên dưới đã được dán vào GitHub";
+      $("pushBtn").textContent = "Đăng ký lại"; $("testBtn").hidden = !CFG.WORKER_URL;
+      if (!CFG.WORKER_URL) showSubCode(sub);
+    } else { st.classList.remove("on"); txt.textContent = "Máy này chưa đăng ký nhận thông báo"; }
+  }
+  function showSubCode(sub) {
+    let box = $("subCode");
+    if (!box) {
+      box = document.createElement("div"); box.id = "subCode"; box.className = "empty"; box.style.margin = "8px 0 0";
+      $("pushHelp").parentNode.insertBefore(box, $("pushHelp"));
+    }
+    const code = JSON.stringify([sub.toJSON()]);
+    box.innerHTML = `<b>Đoạn mã đăng ký của máy này</b>Dán vào GitHub → Settings → Secrets and variables → Actions → <span class="mono">PUSH_SUBS_FALLBACK</span> (nhiều máy thì nối các đoạn trong cùng một mảng JSON). Làm một lần mỗi máy.
+      <textarea id="subTxt" readonly style="width:100%;height:70px;margin-top:8px;font-family:IBM Plex Mono,monospace;font-size:10px;background:var(--surface);color:inherit;border:1px solid var(--line);border-radius:7px;padding:6px"></textarea>
+      <div style="margin-top:6px"><button type="button" class="btn" id="copySub">Sao chép</button></div>`;
+    $("subTxt").value = code;
+    $("copySub").addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(code); showToast("Đã sao chép", "Dán vào GitHub Secret PUSH_SUBS_FALLBACK."); }
+      catch (_) { $("subTxt").select(); document.execCommand("copy"); showToast("Đã sao chép", ""); }
+    });
   }
   $("pushBtn").addEventListener("click", async () => {
     try {
@@ -259,9 +284,13 @@
       const reg = await navigator.serviceWorker.ready;
       let sub = await reg.pushManager.getSubscription();
       if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToU8(CFG.VAPID_PUBLIC) });
-      const r = await fetch(CFG.WORKER_URL + "/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ ua: navigator.userAgent.slice(0, 120) }, sub.toJSON())) });
-      if (!r.ok) throw new Error("Worker trả lỗi " + r.status);
-      showToast("Đã đăng ký máy này", "Từ giờ cảnh báo sau phiên sẽ tới đây. Bấm 'Gửi thử' để kiểm tra đường dây.");
+      if (CFG.WORKER_URL) {
+        const r = await fetch(CFG.WORKER_URL + "/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ ua: navigator.userAgent.slice(0, 120) }, sub.toJSON())) });
+        if (!r.ok) throw new Error("Worker trả lỗi " + r.status);
+        showToast("Đã đăng ký máy này", "Từ giờ cảnh báo sau phiên sẽ tới đây. Bấm 'Gửi thử' để kiểm tra đường dây.");
+      } else {
+        showToast("Đã tạo địa chỉ nhận", "Sao chép đoạn mã bên dưới và dán vào GitHub — một lần cho máy này.");
+      }
       pushStatus();
     } catch (err) { alert("Không đăng ký được: " + err.message); }
   });

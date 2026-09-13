@@ -1,6 +1,6 @@
 {
  "trade_date": "2026-09-11",
- "generated_at": "2026-09-13T18:07:39+07:00",
+ "generated_at": "2026-09-13T18:17:02+07:00",
  "industry": {
   "today_change": 60526228250.0,
   "n_today": 9,
@@ -21,36 +21,12 @@
    "body": "+3.15% so kết phiên hôm qua · IDP +15.0% kéo 241 tỷ"
   },
   {
-   "rule": "R4",
-   "broker": "VDS",
-   "ticker": "",
-   "hot": true,
-   "title": "VDS · lỗ so giá vốn vượt 15%",
-   "body": "-28.5% · 302 tỷ trên giá vốn 1.060 tỷ · chỉ báo lần đầu chạm"
-  },
-  {
-   "rule": "R4",
-   "broker": "VND",
-   "ticker": "",
-   "hot": true,
-   "title": "VND · lỗ so giá vốn vượt 15%",
-   "body": "-19.2% · 222 tỷ trên giá vốn 1.153 tỷ · chỉ báo lần đầu chạm"
-  },
-  {
    "rule": "R1",
    "broker": "VCI",
    "ticker": "IDP",
    "hot": false,
    "title": "VCI · IDP +15.0%",
    "body": "Giá trị nắm giữ 1.850 tỷ · thêm 241 tỷ trong phiên"
-  },
-  {
-   "rule": "R4",
-   "broker": "VCI",
-   "ticker": "",
-   "hot": false,
-   "title": "VCI · lãi so giá vốn vượt 15%",
-   "body": "+30.1% · 1.372 tỷ trên giá vốn 4.565 tỷ · chỉ báo lần đầu chạm"
   }
  ],
  "brokers": [

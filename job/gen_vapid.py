@@ -20,7 +20,7 @@ def main() -> None:
     print("VAPID_PRIVATE_KEY=" + b64(priv))
     print("VAPID_SUBJECT=mailto:you@example.com")
     print("\nDán 3 dòng trên vào .env (local) và vào GitHub → Settings → Secrets (Actions).")
-    print("VAPID_PUBLIC_KEY cũng phải đặt vào site/app.js (biến VAPID_PUBLIC) để điện thoại đăng ký.")
+    print("VAPID_PUBLIC_KEY cũng phải đặt vào docs/config.js (biến VAPID_PUBLIC) để điện thoại đăng ký.")
 
 
 if __name__ == "__main__":
