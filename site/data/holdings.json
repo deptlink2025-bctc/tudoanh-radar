@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T17:17:19+07:00",
+ "generated_at": "2026-09-13T17:19:54+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -702,6 +702,107 @@
      "quantity": null,
      "quantity_source": "disclosed",
      "cost_value": 2774305638902.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "DSE",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T17:19:54",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY 2/DSE_Baocaotaichinh_Q2_2026.zip",
+   "note_pages": "all",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 15207601983125.0,
+    "st_fin_assets": 13666086410890.0,
+    "afs": 0.0,
+    "htm": 4659250000000.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "- Cổ phiếu, chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 421436516834.0,
+     "cost_source": "disclosed",
+     "fair_value": 381198691857.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "- Trái phiếu",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1158137402765.0,
+     "cost_source": "disclosed",
+     "fair_value": 1158740592600.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "- Giấy tờ có giá",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn trên 3 tháng đến 1 năm (Ngắn hạn)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 4359250000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "CCTG có kỳ hạn trên 3 tháng đến 1 năm (Ngắn hạn)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 300000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn gốc trên 1 năm (Dài hạn)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu (Dài hạn)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1054836219137.0,
      "cost_source": "disclosed",
      "fair_value": null,
      "fair_source": "disclosed"
