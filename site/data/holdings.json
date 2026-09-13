@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T17:59:56+07:00",
+ "generated_at": "2026-09-13T18:02:52+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -902,9 +902,9 @@
    "broker": "HCM",
    "quarter": "2026Q2",
    "stmt_type": "rieng",
-   "approved_at": "2026-09-13T16:47:03",
+   "approved_at": "2026-09-13T18:02:52",
    "source_url": "https://storage.googleapis.com/cweb-p-media/hsc-cweb-2/BCTC_HSC_Q2_2026_VIE_compressed_a78d5c6219/BCTC_HSC_Q2_2026_VIE_compressed_a78d5c6219.pdf",
-   "note_pages": "6,7,9,10,11,12",
+   "note_pages": "36,37,38,39",
    "totals": {
     "fiscalDate": "2026-06-30",
     "total_assets": 41258918871493.0,
@@ -912,7 +912,332 @@
     "afs": 0.0,
     "htm": 381500000000.0
    },
-   "holdings": []
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MWG",
+     "raw_label": "Công ty CP Đầu tư Thế Giới Di Động (MWG)",
+     "is_listed": true,
+     "quantity": 4426716.0,
+     "quantity_source": "implied",
+     "cost_value": 339324058898.0,
+     "cost_source": "disclosed",
+     "fair_value": 340414470000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "FPT",
+     "raw_label": "Công ty Cổ phần FPT (FPT)",
+     "is_listed": true,
+     "quantity": 2145255.0,
+     "quantity_source": "implied",
+     "cost_value": 152020356585.0,
+     "cost_source": "disclosed",
+     "fair_value": 150596901000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "ACB",
+     "raw_label": "Ngân hàng TMCP Á Châu (ACB)",
+     "is_listed": true,
+     "quantity": 6095386.0,
+     "quantity_source": "implied",
+     "cost_value": 136929868162.0,
+     "cost_source": "disclosed",
+     "fair_value": 138060492900.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "VPB",
+     "raw_label": "Ngân hàng TMCP Việt Nam Thịnh Vượng (VPB)",
+     "is_listed": true,
+     "quantity": 5058800.0,
+     "quantity_source": "implied",
+     "cost_value": 136822625991.0,
+     "cost_source": "disclosed",
+     "fair_value": 136587600000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HPG",
+     "raw_label": "Công ty Cổ phần Tập đoàn Hòa Phát (HPG)",
+     "is_listed": true,
+     "quantity": 4587672.0,
+     "quantity_source": "implied",
+     "cost_value": 107511423372.0,
+     "cost_source": "disclosed",
+     "fair_value": 106892757600.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 24045902824.0,
+     "cost_source": "disclosed",
+     "fair_value": 24113806363.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "STB",
+     "raw_label": "Ngân hàng TMCP Sài Gòn Thương Tín (STB)",
+     "is_listed": true,
+     "quantity": 899500.0,
+     "quantity_source": "implied",
+     "cost_value": 65117374525.0,
+     "cost_source": "disclosed",
+     "fair_value": 66383100000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HPG",
+     "raw_label": "Công ty Cổ phần Tập đoàn Hòa Phát (HPG)",
+     "is_listed": true,
+     "quantity": 1887789.0,
+     "quantity_source": "implied",
+     "cost_value": 46762493683.0,
+     "cost_source": "disclosed",
+     "fair_value": 43985483700.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "ACB",
+     "raw_label": "Ngân hàng TMCP Á Châu (ACB)",
+     "is_listed": true,
+     "quantity": 1538275.0,
+     "quantity_source": "implied",
+     "cost_value": 34307969513.0,
+     "cost_source": "disclosed",
+     "fair_value": 34841928750.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "TCB",
+     "raw_label": "Ngân hàng TMCP Kỹ Thương Việt Nam (TCB)",
+     "is_listed": true,
+     "quantity": 952800.0,
+     "quantity_source": "implied",
+     "cost_value": 31160394534.0,
+     "cost_source": "disclosed",
+     "fair_value": 31918800000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 60588180338.0,
+     "cost_source": "disclosed",
+     "fair_value": 57456766000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 650000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 650000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu niêm yết và trái phiếu đăng ký và giao dịch trên sàn trái phiếu riêng lẻ của HNX",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 5999999900000.0,
+     "cost_source": "disclosed",
+     "fair_value": 6145776336908.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1000000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 1005002739726.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ ETF DCVFMVN30 (E1VFVN30)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 91285021948.0,
+     "cost_source": "disclosed",
+     "fair_value": 91339287690.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ ETF KIM GROWTH VN30 (FUEKIV30)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 69613328507.0,
+     "cost_source": "disclosed",
+     "fair_value": 70011102000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ VFMDIAMOND ETF (FUEVFVND)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 6385148426.0,
+     "cost_source": "disclosed",
+     "fair_value": 6410235120.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ ETF SSIAM VNFIN LEAD (FUESSVFL)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 6171494301.0,
+     "cost_source": "disclosed",
+     "fair_value": 6304579230.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ ETF VINACAPITAL VN100 (FUEVN100)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 4767603103.0,
+     "cost_source": "disclosed",
+     "fair_value": 4785617200.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ ETF TECHCOM CAPITAL VNX50 (FUETCC50)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2173782628.0,
+     "cost_source": "disclosed",
+     "fair_value": 2184534000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ MAFMVN30 ETF (FUEMAV30)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1030345084.0,
+     "cost_source": "disclosed",
+     "fair_value": 2439840000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ ETF PHFM VNSHINE",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1009841000.0,
+     "cost_source": "disclosed",
+     "fair_value": 1009841000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ MIDCAP (FUEDCMID)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 997157116.0,
+     "cost_source": "disclosed",
+     "fair_value": 1314280000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Quỹ Đầu tư Trái phiếu Chiến lược KIM (KSIF)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 15000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 15000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi có thể chuyển nhượng",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn còn lại dưới 1 năm",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 381500000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 381500000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn còn lại trên 1 năm",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
   },
   {
    "broker": "MBS",
@@ -1444,22 +1769,6 @@
      "fair_source": "disclosed"
     }
    ]
-  },
-  {
-   "broker": "SSI",
-   "quarter": "2026Q2",
-   "stmt_type": "rieng",
-   "approved_at": "2026-09-13T16:47:25",
-   "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/IR/20260720_SSI_Bao_cao_tai_chinh_rieng_Quy_2_nam_2026.pdf",
-   "note_pages": "2,3,4,5,6,7",
-   "totals": {
-    "fiscalDate": "2026-06-30",
-    "total_assets": 96460587873471.0,
-    "st_fin_assets": 91456869269870.0,
-    "afs": 691386729723.0,
-    "htm": 4515680620253.0
-   },
-   "holdings": []
   },
   {
    "broker": "TCX",
