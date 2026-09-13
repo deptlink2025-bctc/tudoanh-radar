@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TuDoanh Radar — duyệt BCTC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/static/review.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand"><span class="mark">▮▮▮</span> TuDoanh Radar · duyệt BCTC</div>
+    <div class="topright">
+      <span id="health" class="pill">…</span>
+      <button class="btn ghost" id="exportBtn" type="button">Xuất &amp; đẩy holdings.json</button>
+    </div>
+  </header>
+
+  <!-- ================= KHỐI 1: MÙA BCTC ================= -->
+  <section class="card">
+    <div class="qhead">
+      <div class="t">Mùa BCTC · <span id="qLabel">—</span></div>
+      <select id="qSel" aria-label="Chọn quý"></select>
+      <div class="sum" id="qSum">—</div>
+      <button class="btn" id="rerunStuckBtn" type="button">Chạy lại các công ty kẹt</button>
+      <button class="btn primary" id="startBtn" type="button">Bắt đầu quý này</button>
+    </div>
+    <div class="steps">
+      <div class="step you"><span class="who">Anh bấm</span><span class="n">0 · Bắt đầu quý</span><span class="d">Một nút, một lần mỗi quý</span></div>
+      <div class="step auto"><span class="who">Tự động</span><span class="n">1 · Tải PDF</span><span class="d">Từ trang IR mỗi CTCK</span></div>
+      <div class="step auto"><span class="who">Tự động</span><span class="n">2 · Tìm trang</span><span class="d">Quét thumbnail, tìm bảng FVTPL</span></div>
+      <div class="step auto"><span class="who">Tự động</span><span class="n">3 · Đọc ảnh</span><span class="d">Claude bóc bảng thành số</span></div>
+      <div class="step auto"><span class="who">Tự động</span><span class="n">4 · Đối chiếu</span><span class="d">4 kiểm tra, gắn cờ dòng nghi ngờ</span></div>
+      <div class="step you"><span class="who">Anh duyệt</span><span class="n">5 · Chốt</span><span class="d">~5 phút/công ty, rồi điện thoại tự cập nhật</span></div>
+    </div>
+    <div class="queue" id="queue"></div>
+  </section>
+
+  <!-- ================= KHỐI 2: DUYỆT ================= -->
+  <section class="card" id="reviewCard" hidden>
+    <div class="qhead">
+      <div class="t" id="rvTitle">Duyệt số liệu</div>
+      <div class="sum" id="rvMeta"></div>
+      <span class="chip flag" id="rvFlag" hidden></span>
+      <button class="btn ghost" id="rvClose" type="button">Đóng</button>
+    </div>
+    <div class="grid">
+      <div class="pdfpane">
+        <div class="pdfcap">
+          <span>Ảnh trang gốc · <span id="pgLabel">—</span></span>
+          <span class="pgnav">
+            <button class="tbtn" id="pgPrev" type="button">‹</button>
+            <input id="pgInput" class="pginput" inputmode="numeric" aria-label="Số trang">
+            <button class="tbtn" id="pgNext" type="button">›</button>
+            <select id="pgNote" aria-label="Trang thuyết minh"></select>
+          </span>
+        </div>
+        <div class="scanbox"><img id="pgImg" alt="Trang PDF" src=""></div>
+      </div>
+      <div class="editpane">
+        <div class="checks" id="checks"></div>
+        <div class="notes" id="notes" hidden></div>
+        <div class="tablewrap">
+          <table id="tbl">
+            <thead><tr>
+              <th>Mã</th><th>Loại</th><th>Tên dòng trong bảng</th><th>Số lượng</th><th>Giá gốc (tỷ)</th><th>GT hợp lý (tỷ)</th><th>Niêm yết</th><th>Nguồn</th><th></th>
+            </tr></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="addrow">
+          <input id="nT" placeholder="Mã" maxlength="10" style="width:80px;text-transform:uppercase">
+          <select id="nC"><option>FVTPL</option><option>AFS</option><option>HTM</option></select>
+          <input id="nQ" class="num" placeholder="Số lượng" inputmode="numeric">
+          <input id="nCost" class="num" placeholder="Giá gốc (tỷ)" inputmode="decimal">
+          <input id="nFair" class="num" placeholder="GT hợp lý (tỷ)" inputmode="decimal">
+          <button class="btn ghost" id="addBtn" type="button">+ Thêm dòng tay</button>
+        </div>
+        <div class="foot">
+          <div class="note">Chỉ báo cáo đã chốt mới hiện trên app và mới dùng để cảnh báo. Ô sửa tay hoặc dòng gõ thêm mang nhãn <span class="chip man">nhập tay</span>.</div>
+          <button class="btn ghost" id="rerunExtract" type="button">Đọc ảnh lại</button>
+          <button class="btn ghost" id="rerunValidate" type="button">Đối chiếu lại</button>
+          <button class="btn primary" id="approveBtn" type="button">Chốt báo cáo</button>
+        </div>
+        <div class="msg" id="rvMsg" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KHỐI 3: CÔNG TY ================= -->
+  <section class="card">
+    <div class="qhead">
+      <div class="t">Công ty theo dõi</div>
+      <div class="sum" id="bSum"></div>
+      <button class="btn" id="uniBtn" type="button">+ Thêm từ 50 CTCK niêm yết</button>
+    </div>
+    <div class="queue" id="brokers"></div>
+    <div class="uni" id="uni" hidden></div>
+  </section>
+
+</div>
+<script src="/static/review.js"></script>
+</body>
+</html>

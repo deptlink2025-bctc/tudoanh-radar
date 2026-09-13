@@ -1,0 +1,16 @@
+name = "tudoanh-radar"
+main = "index.js"
+# Ghim ngày tương thích: Cloudflare đổi runtime sau này cũng không ảnh hưởng bản đã deploy.
+compatibility_date = "2026-09-01"
+
+# Tạo KV một lần:  npx wrangler kv namespace create SUBS   → dán id vào đây
+[[kv_namespaces]]
+binding = "SUBS"
+id = "DAN_ID_KV_VAO_DAY"
+
+[vars]
+ALLOW_ORIGIN = "https://tudoanh-radar.pages.dev"
+# GH_REPO = "ten-github/tudoanh-radar"   # tuỳ chọn: để nút "Gửi thử" kích hoạt job ngay
+
+# Bí mật (không ghi vào file):  npx wrangler secret put TOKEN
+#                               npx wrangler secret put GH_TOKEN   (tuỳ chọn)

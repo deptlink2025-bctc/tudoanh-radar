@@ -1,0 +1,70 @@
+# Job sau phiên. 08:20 UTC = 15:20 giờ VN. Cron dự phòng 08:50 UTC chạy lại nếu lần đầu bị
+# GitHub trễ/bỏ — job idempotent nên có file hôm nay rồi thì thoát ngay.
+name: daily
+
+on:
+  schedule:
+    - cron: "20 8 * * 1-5"
+    - cron: "50 8 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Chạy lại dù hôm nay đã có file"
+        default: "false"
+      test_push:
+        description: "Gửi một thông báo thử tới mọi máy đã đăng ký"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Thông báo thử (khi bấm "Gửi thử" trên điện thoại)
+        if: ${{ github.event.inputs.test_push == 'true' }}
+        env:
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          WORKER_TOKEN: ${{ secrets.WORKER_TOKEN }}
+          PUSH_SUBS_FALLBACK: ${{ secrets.PUSH_SUBS_FALLBACK }}
+        run: python -m job.push --test
+
+      - name: Tính danh mục + cảnh báo + push
+        env:
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          WORKER_TOKEN: ${{ secrets.WORKER_TOKEN }}
+          PUSH_SUBS_FALLBACK: ${{ secrets.PUSH_SUBS_FALLBACK }}
+        run: |
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then FORCE=--force; else FORCE=; fi
+          python -m job.run_daily $FORCE
+
+      - name: Commit kết quả
+        run: |
+          git config user.name "tudoanh-bot"
+          git config user.email "tudoanh-bot@users.noreply.github.com"
+          git add site/data/
+          if git diff --cached --quiet; then echo "không có gì mới"; exit 0; fi
+          git commit -m "daily: $(date -u +%Y-%m-%d) [skip ci]"
+          git pull --rebase
+          git push

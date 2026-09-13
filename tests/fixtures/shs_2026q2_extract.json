@@ -1,0 +1,24 @@
+{
+  "_source": "Chép tay từ BCTC riêng SHS Q2/2026, thuyết minh 7.3.5 trang 24, cột 30/06/2026. Dùng làm fixture khi chưa có khoá API và để test validate.",
+  "unit_multiplier": 1,
+  "rows": [
+    {"asset_class": "FVTPL", "ticker": "CTG", "raw_label": "CTG", "kind": "listed_stock", "quantity": null, "cost_value": 128798657681, "fair_value": 123937768150, "confidence": 0.95},
+    {"asset_class": "FVTPL", "ticker": "HPG", "raw_label": "HPG", "kind": "listed_stock", "quantity": null, "cost_value": 133374803278, "fair_value": 127008300000, "confidence": 0.95},
+    {"asset_class": "FVTPL", "ticker": "HCM", "raw_label": "HCM", "kind": "listed_stock", "quantity": null, "cost_value": 22201451920, "fair_value": 32640000000, "confidence": 0.95},
+    {"asset_class": "FVTPL", "ticker": "MWG", "raw_label": "MWG", "kind": "listed_stock", "quantity": null, "cost_value": 176058433453, "fair_value": 169141170000, "confidence": 0.95},
+    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Cổ phiếu khác", "kind": "other", "quantity": null, "cost_value": 2584696993423, "fair_value": 2783562333363, "confidence": 0.9},
+    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Trái phiếu", "kind": "bond", "quantity": null, "cost_value": 8094052576267, "fair_value": 8030665018788, "confidence": 0.9},
+    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Chứng chỉ quỹ", "kind": "fund", "quantity": null, "cost_value": 40000000000, "fair_value": 41911058868, "confidence": 0.9},
+    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Chứng khoán ủy thác đầu tư", "kind": "other", "quantity": null, "cost_value": 24590489655, "fair_value": 22805000000, "confidence": 0.85},
+    {"asset_class": "FVTPL", "ticker": null, "raw_label": "Công cụ thị trường tiền tệ", "kind": "deposit", "quantity": null, "cost_value": 2000000000, "fair_value": 2000000000, "confidence": 0.9},
+    {"asset_class": "AFS", "ticker": "SHB", "raw_label": "SHB", "kind": "listed_stock", "quantity": null, "cost_value": 275238748169, "fair_value": 910714754550, "confidence": 0.95},
+    {"asset_class": "AFS", "ticker": "TCD", "raw_label": "TCD", "kind": "listed_stock", "quantity": null, "cost_value": 200000000000, "fair_value": 24591600000, "confidence": 0.95},
+    {"asset_class": "AFS", "ticker": null, "raw_label": "Cổ phiếu khác", "kind": "other", "quantity": null, "cost_value": 455317573155, "fair_value": 482700130000, "confidence": 0.9}
+  ],
+  "totals": [
+    {"asset_class": "FVTPL", "label": "FVTPL", "cost_value": 11205773607677, "fair_value": 11333670649169},
+    {"asset_class": "FVTPL", "label": "Cổ phiếu", "cost_value": 3045130341755, "fair_value": 3236289571513},
+    {"asset_class": "AFS", "label": "AFS", "cost_value": 930556321324, "fair_value": 1418006484550}
+  ],
+  "notes": "Bảng không có cột số lượng — chỉ có Giá mua và Giá trị thị trường. Hai nhóm cột 30/06/2026 và 01/01/2026, đã lấy cột 30/06/2026. Phần 'Cổ phiếu khác' chiếm phần lớn FVTPL, không nêu tên mã."
+}

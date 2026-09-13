@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TuDoanh Radar</title>
+<meta name="description" content="Theo dõi danh mục tự doanh của các công ty chứng khoán niêm yết: giá trị hôm nay, lãi/lỗ so giá vốn, thay đổi theo quý, cảnh báo cuối ngày.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#FBF5E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14301F" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TuDoanh">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="stage">
+<div class="phone">
+
+  <header>
+    <div class="brandrow">
+      <div class="mark" aria-hidden="true"><svg class="icon s16" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20v-7M11 20V7M16 20v-4M21 20V11"/></svg></div>
+      <div class="brand">TuDoanh Radar</div>
+      <div class="qchip" id="qchip">—</div>
+    </div>
+    <div class="notice" id="notice">
+      <div class="dot" id="noticeDot" aria-hidden="true"></div>
+      <div id="noticeText">Đang tải dữ liệu…</div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- TAB 1 -->
+    <section class="panel on" id="p-over" role="tabpanel" aria-label="Tổng quan">
+      <div class="stats" id="overStats"></div>
+      <div class="sechead">
+        <h2 id="overH2">—</h2>
+        <div class="seg mini" role="group" aria-label="Xếp theo">
+          <button type="button" data-mode="day" aria-pressed="true">Hôm nay</button>
+          <button type="button" data-mode="pnl" aria-pressed="false">So giá vốn</button>
+        </div>
+      </div>
+      <div class="notice" style="margin:0 16px 8px;font-size:11px">
+        <div class="dot" style="background:var(--est)" aria-hidden="true"></div>
+        <div><b>Hôm nay</b> = giá trị danh mục so với kết phiên hôm trước. <b>So giá vốn</b> = so với số tiền đã bỏ ra mua — lãi/lỗ trên giấy, chưa bán nên chưa thành tiền.</div>
+      </div>
+      <div class="board" id="brokerBoard"></div>
+      <div class="empty" id="overNote"></div>
+    </section>
+
+    <!-- TAB 2 -->
+    <section class="panel" id="p-port" role="tabpanel" aria-label="Danh mục">
+      <div class="pickrow" id="pickRow"></div>
+      <div id="portBody"></div>
+    </section>
+
+    <!-- TAB 3 -->
+    <section class="panel" id="p-diff" role="tabpanel" aria-label="Thay đổi quý">
+      <div class="pickrow" id="diffPickRow"></div>
+      <div class="notice" style="margin:11px 16px 0">
+        <div class="dot" style="background:var(--est)" aria-hidden="true"></div>
+        <div>So sánh hai ảnh chụp danh mục cuối hai quý liên tiếp, ghép theo mã. Mua rồi bán hết trong quý sẽ <b>không nhìn thấy</b> — đó là giới hạn của BCTC, không phải của app.</div>
+      </div>
+      <div id="diffBody"></div>
+    </section>
+
+    <!-- TAB 4 -->
+    <section class="panel" id="p-alert" role="tabpanel" aria-label="Cảnh báo">
+      <div class="sechead"><h2>Phiên gần nhất</h2><div class="meta" id="alertMeta">—</div></div>
+      <div id="alertList"></div>
+
+      <div class="sechead"><h2>Công ty theo dõi</h2><div class="meta" id="trackMeta">—</div></div>
+      <div id="trackList"></div>
+      <div class="setrow">
+        <div class="h">Thêm công ty mới hoặc bóc BCTC quý mới: làm trên <b>máy tính</b> (màn hình duyệt). Tại đây chỉ bật/tắt; thay đổi có hiệu lực từ lần chạy 15:20 kế tiếp.</div>
+      </div>
+
+      <div class="sechead"><h2>Ngưỡng cảnh báo</h2><div class="meta" id="setMeta">4 quy tắc</div></div>
+      <div class="setrow">
+        <div class="setlab"><span class="t">R1 · Một mã biến động mạnh</span><span class="v num" id="r1v">—</span></div>
+        <input type="range" id="r1" min="3" max="15" step="0.5" aria-label="Ngưỡng R1">
+        <div class="h">Chỉ báo khi giá trị nắm giữ mã đó ≥ <span id="r1min">20</span> tỷ. Không có điều kiện kép này thì mọi mã nhỏ nhảy 7% đều rung chuông vô nghĩa.</div>
+      </div>
+      <div class="setrow">
+        <div class="setlab"><span class="t">R2 · Lãi/lỗ toàn danh mục đổi</span><span class="v num" id="r2v">—</span></div>
+        <input type="range" id="r2" min="20" max="400" step="10" aria-label="Ngưỡng R2">
+        <div class="h">Tính trên một công ty, trong một phiên.</div>
+      </div>
+      <div class="setrow">
+        <div class="setlab"><span class="t">R3 · Mã trụ cột chạm sàn/trần</span><span class="v num">&gt; 20%</span></div>
+        <div class="h">Áp dụng cho mã chiếm trên 20% danh mục của một công ty. Luôn bật.</div>
+      </div>
+      <div class="setrow">
+        <div class="setlab"><span class="t">R4 · Lãi/lỗ so giá vốn vượt ngưỡng</span><span class="v num" id="r4v">—</span></div>
+        <input type="range" id="r4" min="5" max="40" step="1" aria-label="Ngưỡng R4">
+        <div class="h">Chỉ báo lần đầu chạm, không lặp lại mỗi ngày.</div>
+      </div>
+      <div class="setrow"><div class="h" id="setSaved"></div></div>
+
+      <div class="sechead"><h2>Cách bắn cảnh báo</h2><div class="meta">không máy chủ</div></div>
+      <div class="setrow">
+        <div class="setlab"><span class="t">Quét một lần sau phiên</span><span class="v num">15:20 · T2–T6</span></div>
+        <div class="h">Không có máy chủ nào chạy 24/7. Đúng 15:20, GitHub tự khởi động một máy tạm (~3 phút, miễn phí): lấy giá các mã đang giữ, tính lại danh mục, soi 4 quy tắc, gửi thông báo, lưu kết quả, rồi tắt. Có thể trễ 10–30 phút giờ cao điểm.</div>
+      </div>
+      <div class="setrow">
+        <div class="setlab"><span class="t">Nhịp tim mỗi thứ Hai</span><span class="v">luôn bật</span></div>
+        <div class="h">Thứ Hai 15:20 luôn gửi <i>"TuDoanh Radar vẫn chạy"</i> kể cả khi không có gì. Thứ Hai mà máy không rung = có chỗ hỏng.</div>
+      </div>
+      <div class="setrow">
+        <div class="pushstate" id="pushState"><span class="dot"></span><span>Đang kiểm tra…</span></div>
+        <button class="btn primary" id="pushBtn" type="button">Bật thông báo trên máy này</button>
+        <button class="btn" id="testBtn" type="button" hidden>Gửi thử một thông báo</button>
+        <div class="h" id="pushHelp">Bấm một lần trên mỗi điện thoại muốn nhận. Trên Android: cài app vào màn hình chính trước (menu trình duyệt → "Thêm vào màn hình chính").</div>
+      </div>
+      <div class="setrow"><div class="h" id="srcInfo"></div></div>
+    </section>
+  </main>
+
+  <nav role="tablist">
+    <button role="tab" aria-selected="true" data-tab="over"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M6 20v-7M11 20V7M16 20v-4M21 20V11"/></svg><span class="tx">Tổng quan</span></button>
+    <button role="tab" aria-selected="false" data-tab="port"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5h18v12H3z"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg><span class="tx">Danh mục</span></button>
+    <button role="tab" aria-selected="false" data-tab="diff"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h13M17 4l3 3-3 3"/><path d="M20 17H7M7 14l-3 3 3 3"/></svg><span class="tx">Thay đổi</span></button>
+    <button role="tab" aria-selected="false" data-tab="alert"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8.5A6 6 0 0 0 6 8.5c0 6.5-2.5 8.5-2.5 8.5h17S18 15 18 8.5"/><path d="M13.7 20.5a2 2 0 0 1-3.4 0"/></svg><span class="tx">Cảnh báo</span><span class="navcount" id="navCount" hidden>0</span></button>
+  </nav>
+
+  <div class="toast" id="toast" aria-live="polite"><div class="notif"><div class="ic"><svg class="icon s16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M6 20v-7M11 20V7M16 20v-4M21 20V11"/></svg></div><div><div class="app"><b>TuDoanh Radar</b> · vừa xong</div><div class="ti" id="toastTitle">—</div><div class="bo" id="toastBody"></div><div class="ac">BẤM ĐỂ ĐÓNG</div></div></div></div>
+
+  <div class="sheetwrap" id="sheetWrap">
+    <div class="sheet" role="dialog" aria-label="Chi tiết" aria-modal="true">
+      <div class="sheethead"><div class="s mono" id="shSym">—</div><div class="sub" id="shSub">—</div>
+        <button class="xbtn" id="shClose" type="button" aria-label="Đóng"><svg class="icon s16" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+      <div class="sheetbody" id="shBody"></div>
+    </div>
+  </div>
+
+</div>
+</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

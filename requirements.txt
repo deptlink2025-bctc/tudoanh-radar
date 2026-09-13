@@ -1,0 +1,13 @@
+
+# Tầng A (local) + Tầng B (GitHub Actions) dùng chung một file.
+# Pin phiên bản như KingStock — cài lại sau một năm vẫn ra đúng bộ này.
+httpx==0.28.1
+python-dotenv==1.0.1
+SQLAlchemy==2.0.36
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+PyMuPDF==1.28.2
+anthropic==1.5.0
+pywebpush==2.0.3
+py-vapid==1.9.1
+pytest==8.3.4
