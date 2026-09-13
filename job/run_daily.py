@@ -195,7 +195,9 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
 
 def _welcome_new_devices(st: dict, now: datetime) -> None:
     subs, src = push.subscriptions()
+    st["devices"] = {"n": len(subs), "source": src, "vapid": push.configured(), "checked_at": now.isoformat(timespec="seconds")}
     if not subs or not push.configured():
+        _dump(STATE, st)
         return
     known = set(st.get("known_subs") or [])
     new = [s for s in subs if push._sub_id(s) not in known]

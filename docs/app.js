@@ -197,6 +197,13 @@
     $("alertList").innerHTML = al.length ? al.map((a) => `<div class="alert"><div class="rulebadge ${a.hot ? "hot" : ""}">${a.rule}</div><div class="abody"><div class="atitle">${esc(a.title)}</div><div class="ameta">${esc(a.body)}</div></div></div>`).join("")
       : `<div class="empty">Phiên ${dmy(D.trade_date)} không có gì vượt ngưỡng.</div>`;
     const p = D.push || {};
+    fetch("data/state.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).then((st) => {
+      if (!st || !st.devices) return;
+      const d = st.devices;
+      const line = d.n ? `Job nhìn thấy <b>${d.n} máy</b> đã đăng ký (kiểm tra ${st.devices.checked_at.slice(11, 16)} ${dmy(d.checked_at)})${st.welcome ? " · đã gửi chào mừng " + dmy(st.welcome.at) : ""}`
+        : `<b style="color:var(--down)">Job chưa thấy máy nào</b> — Secret PUSH_SUBS_FALLBACK trên GitHub chưa có hoặc trống (kiểm tra ${d.checked_at.slice(11, 16)} ${dmy(d.checked_at)})`;
+      $("srcInfo").innerHTML += "<br>" + line;
+    }).catch(() => {});
     $("srcInfo").innerHTML = `Chạy lúc ${D.generated_at ? D.generated_at.slice(11, 16) + " " + dmy(D.generated_at) : "—"} · giá ${D.source ? D.source.n_priced + "/" + D.source.n_tickers : "—"} mã` + (p.skipped ? " · chưa gửi thông báo (chạy thử)" : ` · đã gửi ${p.sent || 0} thông báo tới ${p.n_devices || 0} máy${p.gone ? ` · <b style="color:var(--down)">${p.gone} máy đã huỷ đăng ký — bấm Bật lại</b>` : ""}`);
   }
   function renderTrack() {
