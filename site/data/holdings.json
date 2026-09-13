@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T17:59:39+07:00",
+ "generated_at": "2026-09-13T17:59:56+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -2183,6 +2183,203 @@
      "quantity": null,
      "quantity_source": "disclosed",
      "cost_value": 722000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "VND",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T17:59:56",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY 2/VND_Baocaotaichinh_Q2_2026.zip",
+   "note_pages": "all",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 49866116931034.0,
+    "st_fin_assets": 48308624669189.0,
+    "afs": 0.0,
+    "htm": 9814216000000.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HSG",
+     "raw_label": "HSG",
+     "is_listed": true,
+     "quantity": 39394570.0,
+     "quantity_source": "implied",
+     "cost_value": 553871356530.0,
+     "cost_source": "disclosed",
+     "fair_value": 460916469000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "REE",
+     "raw_label": "REE",
+     "is_listed": true,
+     "quantity": 5556884.0,
+     "quantity_source": "implied",
+     "cost_value": 295635437313.0,
+     "cost_source": "disclosed",
+     "fair_value": 275899290600.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MWG",
+     "raw_label": "MWG",
+     "is_listed": true,
+     "quantity": 1551298.0,
+     "quantity_source": "implied",
+     "cost_value": 119909229259.0,
+     "cost_source": "disclosed",
+     "fair_value": 119294782200.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu và chứng chỉ quỹ niêm yết khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 706682876297.0,
+     "cost_source": "disclosed",
+     "fair_value": 716279112120.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MWG",
+     "raw_label": "MWG (Cổ phiếu niêm yết cho hoạt động phòng ngừa rủi ro của chứng quyền)",
+     "is_listed": true,
+     "quantity": 1269912.0,
+     "quantity_source": "implied",
+     "cost_value": 98159234249.0,
+     "cost_source": "disclosed",
+     "fair_value": 97656240000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HDB",
+     "raw_label": "HDB",
+     "is_listed": true,
+     "quantity": 1700344.0,
+     "quantity_source": "implied",
+     "cost_value": 45058758972.0,
+     "cost_source": "disclosed",
+     "fair_value": 43953892400.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "FPT",
+     "raw_label": "FPT",
+     "is_listed": true,
+     "quantity": 458000.0,
+     "quantity_source": "implied",
+     "cost_value": 40710016031.0,
+     "cost_source": "disclosed",
+     "fair_value": 32151600000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 124384798308.0,
+     "cost_source": "disclosed",
+     "fair_value": 123306253950.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "TNR",
+     "raw_label": "TNRE",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 585060314711.0,
+     "cost_source": "disclosed",
+     "fair_value": 585060314711.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "VNDBF",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 105200000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 154423898156.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu và chứng chỉ quỹ chưa niêm yết khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 407656905278.0,
+     "cost_source": "disclosed",
+     "fair_value": 364343992416.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 14909494666094.0,
+     "cost_source": "disclosed",
+     "fair_value": 15114502361652.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 4220773521600.0,
+     "cost_source": "disclosed",
+     "fair_value": 4220773521600.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn - Tiền gửi có kỳ hạn gốc trên 03 tháng và kỳ hạn còn lại dưới 12 tháng",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 9814216000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Đầu tư nắm giữ đến ngày đáo hạn dài hạn - Tiền gửi có kỳ hạn còn lại từ trên 12 tháng",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 400000000000.0,
      "cost_source": "disclosed",
      "fair_value": null,
      "fair_source": "disclosed"
