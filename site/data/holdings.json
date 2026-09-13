@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T18:03:17+07:00",
+ "generated_at": "2026-09-13T18:05:39+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -1766,6 +1766,275 @@
      "cost_value": null,
      "cost_source": "disclosed",
      "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "SSI",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T18:05:39",
+   "source_url": "https://www.ssi.com.vn/upload/files/IR/Reports/IR/20260720_SSI_Bao_cao_tai_chinh_rieng_Quy_2_nam_2026.pdf",
+   "note_pages": "38,39,40",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 96460587873471.0,
+    "st_fin_assets": 91456869269870.0,
+    "afs": 691386729723.0,
+    "htm": 4515680620253.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MSB",
+     "raw_label": "MSB",
+     "is_listed": true,
+     "quantity": 30000000.0,
+     "quantity_source": "implied",
+     "cost_value": 372507391746.0,
+     "cost_source": "disclosed",
+     "fair_value": 405000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MWG",
+     "raw_label": "MWG",
+     "is_listed": true,
+     "quantity": 510549.0,
+     "quantity_source": "implied",
+     "cost_value": 40095464579.0,
+     "cost_source": "disclosed",
+     "fair_value": 39261182400.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HPG",
+     "raw_label": "HPG",
+     "is_listed": true,
+     "quantity": 1506604.0,
+     "quantity_source": "implied",
+     "cost_value": 36531777199.0,
+     "cost_source": "disclosed",
+     "fair_value": 35103873200.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "VIC",
+     "raw_label": "VIC",
+     "is_listed": true,
+     "quantity": 151400.0,
+     "quantity_source": "implied",
+     "cost_value": 33466650002.0,
+     "cost_source": "disclosed",
+     "fair_value": 33308000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "FPT",
+     "raw_label": "FPT",
+     "is_listed": true,
+     "quantity": 411904.0,
+     "quantity_source": "implied",
+     "cost_value": 29504202044.0,
+     "cost_source": "disclosed",
+     "fair_value": 28915660800.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu và chứng khoán niêm yết khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 277964193907.0,
+     "cost_source": "disclosed",
+     "fair_value": 278304247879.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HPG",
+     "raw_label": "HPG (phòng ngừa rủi ro chứng quyền)",
+     "is_listed": true,
+     "quantity": 8413088.0,
+     "quantity_source": "implied",
+     "cost_value": 203998566556.0,
+     "cost_source": "disclosed",
+     "fair_value": 196024950400.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "ACB",
+     "raw_label": "ACB (phòng ngừa rủi ro chứng quyền)",
+     "is_listed": true,
+     "quantity": 6045417.0,
+     "quantity_source": "implied",
+     "cost_value": 134390710962.0,
+     "cost_source": "disclosed",
+     "fair_value": 136928695050.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "VHM",
+     "raw_label": "VHM (phòng ngừa rủi ro chứng quyền)",
+     "is_listed": true,
+     "quantity": 1562500.0,
+     "quantity_source": "implied",
+     "cost_value": 116702703560.0,
+     "cost_source": "disclosed",
+     "fair_value": 118593750000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MBB",
+     "raw_label": "MBB (phòng ngừa rủi ro chứng quyền)",
+     "is_listed": true,
+     "quantity": 5495588.0,
+     "quantity_source": "implied",
+     "cost_value": 110951982909.0,
+     "cost_source": "disclosed",
+     "fair_value": 110900966400.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "TCB",
+     "raw_label": "TCB (phòng ngừa rủi ro chứng quyền)",
+     "is_listed": true,
+     "quantity": 1947096.0,
+     "quantity_source": "implied",
+     "cost_value": 63650472093.0,
+     "cost_source": "disclosed",
+     "fair_value": 65227716000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 162260511918.0,
+     "cost_source": "disclosed",
+     "fair_value": 160138469500.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu và Chứng chỉ quỹ chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 206685810543.0,
+     "cost_source": "disclosed",
+     "fair_value": 187955693197.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu (1)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 14543811753688.0,
+     "cost_source": "disclosed",
+     "fair_value": 14511046691147.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi (2)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 26978692436485.0,
+     "cost_source": "disclosed",
+     "fair_value": 26978692436485.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 197420744120.0,
+     "cost_source": "disclosed",
+     "fair_value": 298151674900.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Công ty Cổ phần Công Nghệ Số SSI",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 150000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 150000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Công ty Cổ phần Pan Farm",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 32000014000.0,
+     "cost_source": "disclosed",
+     "fair_value": 32000014000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu chưa niêm yết khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 97130761623.0,
+     "cost_source": "disclosed",
+     "fair_value": 98932581623.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Trái phiếu",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn còn lại dưới 1 năm",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": 4491986769720.0,
      "fair_source": "disclosed"
     }
    ]
