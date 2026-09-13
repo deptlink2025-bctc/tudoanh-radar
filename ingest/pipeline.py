@@ -65,19 +65,33 @@ def step_locate(db, rep: Report, pages: list[int] | None = None) -> bool:
             _stuck(db, rep, "locating", exc)
             return False
         if not pages:
-            _stuck(db, rep, "locating", "Không tìm thấy trang có bảng chi tiết FVTPL/AFS/HTM — gõ số trang tay")
-            return False
+            # Không định vị được → đọc CẢ CUỐN (nén nhỏ). Tốn hơn (~0,3–0,5 USD) nhưng không chịu thua.
+            logger.info("%s %s: không định vị được trang — sẽ đọc cả cuốn", rep.broker, rep.quarter)
+            rep.note_pages = "all"
+            db.commit()
+            return True
         pages = locator.expand(pages, rep.page_count)
     rep.note_pages = ",".join(str(p) for p in pages)
     db.commit()
     return True
 
 
+def _pages_of(rep: Report) -> list[int] | None:
+    if rep.note_pages.strip().lower() == "all":
+        return None
+    return [int(p) for p in rep.note_pages.split(",") if p.strip().isdigit()] or None
+
+
 def step_extract(db, rep: Report) -> bool:
     _set(db, rep, "extracting", stuck_step="", stuck_reason="")
-    pages = [int(p) for p in rep.note_pages.split(",") if p]
+    pages = _pages_of(rep)
     try:
         data = extractor.extract(rep.pdf_path, pages, rep.broker, rep.quarter)
+        if pages and not (data.get("rows") or []):
+            # Trang đã chọn không có bảng (định vị sai) → thử lại với cả cuốn một lần
+            logger.info("%s %s: 0 dòng từ trang %s — đọc lại cả cuốn", rep.broker, rep.quarter, rep.note_pages)
+            data = extractor.extract(rep.pdf_path, None, rep.broker, rep.quarter)
+            rep.note_pages = "all"
     except Exception as exc:  # noqa: BLE001
         _stuck(db, rep, "extracting", exc)
         return False

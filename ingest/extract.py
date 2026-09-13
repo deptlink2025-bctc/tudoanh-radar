@@ -62,9 +62,12 @@ _SCHEMA = {
 
 
 def _prompt(symbol: str, quarter: str) -> str:
-    return f"""Đây là các trang THUYẾT MINH báo cáo tài chính riêng {label(quarter)} (kỳ kết thúc {end_date(quarter):%d/%m/%Y})
-của công ty chứng khoán {symbol}, dạng ảnh scan. Hãy bóc TOÀN BỘ các dòng trong bảng chi tiết
-tài sản tài chính FVTPL, AFS và HTM (nếu có) thành dữ liệu có cấu trúc.
+    return f"""Đây là (các trang của) báo cáo tài chính riêng {label(quarter)} (kỳ kết thúc {end_date(quarter):%d/%m/%Y})
+của công ty chứng khoán {symbol}, dạng ảnh scan, có thể là bản tiếng Việt hoặc tiếng Anh.
+Tìm trong phần THUYẾT MINH bảng chi tiết tài sản tài chính FVTPL, AFS và HTM ("Các loại tài sản
+tài chính" / "Types of financial assets" / "Tình hình biến động giá trị thị trường danh mục") và
+bóc TOÀN BỘ các dòng thành dữ liệu có cấu trúc. KHÔNG lấy số từ Bảng cân đối kế toán (trang có
+cột Mã số 112/113/115) — đó chỉ là số tổng, đưa vào totals nếu muốn đối chiếu.
 
 Quy tắc bắt buộc:
 1. Chỉ lấy số của CỘT KỲ NÀY ({end_date(quarter):%d/%m/%Y}), KHÔNG lấy cột đầu năm / kỳ trước.
@@ -83,9 +86,10 @@ Quy tắc bắt buộc:
 7. Ghi vào notes: bảng nào thiếu cột số lượng, cột nào chỉ có giá trị hợp lý, chỗ nào nghi ngờ."""
 
 
-def extract(pdf: str, pages: list[int], symbol: str, quarter: str) -> dict:
-    """Trả về dict theo _SCHEMA. Ném lỗi API ra ngoài để pipeline đánh dấu stuck."""
-    b64 = pdfslice.slice_b64(pdf, pages)
+def extract(pdf: str, pages: list[int] | None, symbol: str, quarter: str) -> dict:
+    """Trả về dict theo _SCHEMA. pages=None → gửi TOÀN BỘ tài liệu (nén nhỏ) — dùng khi không định
+    vị được trang. Ném lỗi API ra ngoài để pipeline đánh dấu stuck."""
+    b64 = pdfslice.slice_b64(pdf, pages) if pages else pdfslice.compact_b64(pdf)
     with client().messages.stream(
         model=EXTRACT_MODEL,
         max_tokens=16000,

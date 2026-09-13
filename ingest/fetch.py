@@ -196,10 +196,25 @@ def pdf_path_for(symbol: str, quarter: str) -> Path:
 
 
 def fetch(symbol: str, quarter: str, ir_url: str = "", pdf_url: str = "") -> dict:
-    """Tải BCTC. Ưu tiên pdf_url (người dùng dán); không có thì tự tìm trên ir_url."""
-    if not pdf_url:
-        if not ir_url:
-            raise FetchError("Chưa cấu hình trang IR cho công ty này")
-        pdf_url, _ = find_pdf_url(ir_url, quarter)
-    path, sha = download_pdf(pdf_url, pdf_path_for(symbol, quarter))
-    return {"url": pdf_url, "path": str(path), "sha256": sha}
+    """Tải BCTC theo thứ tự: pdf_url người dùng dán → trang IR công ty (nếu cấu hình) → Vietstock."""
+    if pdf_url:
+        path, sha = download_pdf(pdf_url, pdf_path_for(symbol, quarter))
+        return {"url": pdf_url, "path": str(path), "sha256": sha, "source": "manual"}
+
+    errors: list[str] = []
+    if ir_url:
+        try:
+            url, _ = find_pdf_url(ir_url, quarter)
+            path, sha = download_pdf(url, pdf_path_for(symbol, quarter))
+            return {"url": url, "path": str(path), "sha256": sha, "source": "ir"}
+        except FetchError as exc:
+            errors.append(f"Trang IR: {exc}")
+            logger.info("%s: trang IR thất bại (%s) — thử Vietstock", symbol, exc)
+
+    from . import vietstock  # import muộn: tránh vòng import
+    try:
+        path, sha, url = vietstock.download_report(symbol, quarter, pdf_path_for(symbol, quarter))
+        return {"url": url, "path": str(path), "sha256": sha, "source": "vietstock"}
+    except FetchError as exc:
+        errors.append(f"Vietstock: {exc}")
+    raise FetchError(" · ".join(errors))

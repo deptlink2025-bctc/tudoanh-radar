@@ -53,9 +53,15 @@ theo từng mã chứng khoán không? Bảng cần tìm có đặc điểm:
 - Có cột số lượng và/hoặc giá gốc ("Giá mua") và giá trị hợp lý ("Giá trị thị trường", "Giá trị đánh giá lại").
 - Thường có hai nhóm cột: kỳ này (30/06, 30/09...) và đầu năm (01/01).
 - Liệt kê từng mã (HPG, VHM, TCB...) hoặc từng loại (cổ phiếu niêm yết, trái phiếu, chứng chỉ tiền gửi).
-KHÔNG tính: bảng cân đối kế toán tổng, bảng lãi/lỗ từ tài sản tài chính (chỉ có doanh thu),
-bảng phân tích rủi ro, hay bảng chỉ có số tổng không có tên mã.
-Số trang của từng ảnh được ghi ngay trước ảnh. Trả về đúng số trang đó."""
+TUYỆT ĐỐI KHÔNG tính (has_table = false):
+- BẢNG CÂN ĐỐI KẾ TOÁN / Statement of financial position: nhận ra bằng cột "Mã số"/"Code",
+  "Thuyết minh"/"Note", các dòng đánh số 111, 112, 113, 115, 131..., dù có chữ FVTPL/AFS/HTM.
+- Báo cáo kết quả kinh doanh, lưu chuyển tiền tệ, bảng lãi/lỗ từ tài sản tài chính.
+- Trang chữ thuần (chính sách kế toán), bảng phân tích rủi ro, bảng chỉ có số tổng.
+Bảng cần tìm có tiêu đề kiểu "Các loại tài sản tài chính" / "Types of financial assets" /
+"Tài sản tài chính FVTPL" và dòng là TÊN CÔNG CỤ (mã cổ phiếu, "Cổ phiếu niêm yết", "Trái phiếu",
+"Chứng chỉ tiền gửi"...) với cột giá gốc ("Giá mua", "Original value") và giá trị hợp lý ("Fair value").
+Tài liệu có thể là bản tiếng Anh. Số trang của từng ảnh được ghi ngay trước ảnh. Trả về đúng số trang đó."""
 
 
 def _ask(pdf: str, pages: list[int]) -> list[dict]:

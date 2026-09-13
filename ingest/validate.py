@@ -36,21 +36,23 @@ def check_totals(rows: list[dict], totals: list[dict]) -> dict:
         d = by_class.setdefault(r["asset_class"], {"cost": 0.0, "fair": 0.0})
         d["cost"] += r.get("cost_value") or 0
         d["fair"] += r.get("fair_value") or 0
-    biggest: dict[str, dict] = {}
+    # Hai cách khớp: (a) với dòng tổng LỚN NHẤT của nhóm (bảng có tổng chung + tổng phụ),
+    # (b) với TỔNG CỘNG các dòng tổng của nhóm (bảng chỉ có tổng phụ rời, VD HTM ngắn hạn + dài hạn).
+    by_ac: dict[str, list[dict]] = {}
     for t in totals or []:
-        ac = t["asset_class"]
-        key = max(t.get("cost_value") or 0, t.get("fair_value") or 0)
-        if ac not in biggest or key > max(biggest[ac].get("cost_value") or 0, biggest[ac].get("fair_value") or 0):
-            biggest[ac] = t
-    for ac, t in biggest.items():
+        by_ac.setdefault(t["asset_class"], []).append(t)
+    for ac, ts in by_ac.items():
         got = by_class.get(ac)
         if not got:
             continue
-        for key, want in (("cost", t.get("cost_value")), ("fair", t.get("fair_value"))):
-            if want is None:
+        for key, fld in (("cost", "cost_value"), ("fair", "fair_value")):
+            vals = [t[fld] for t in ts if t.get(fld) is not None]
+            if not vals:
                 continue
-            p = _pct(got[key], want)
-            good = p is not None and p <= TOL_TOTAL
+            cands = {max(vals), sum(vals)}
+            best = min((_pct(got[key], w) or 0, w) for w in cands if w)
+            p, want = best
+            good = p <= TOL_TOTAL
             ok = ok and good
             detail.append({"asset_class": ac, "field": key, "sum": got[key], "total": want, "pct": p, "ok": good})
     if not totals:
@@ -148,6 +150,10 @@ def imply_quantity(rows: list[dict], closes: dict[str, float]) -> int:
 
 def run_all(rows: list[dict], totals: list[dict], finfo: dict | None, meta: dict[str, dict], closes: dict[str, float]) -> list[dict]:
     """Chạy 4 kiểm tra theo thứ tự; check 3 phải trước check 4 (cần is_listed)."""
+    live = [r for r in rows if not r.get("deleted")]
+    if not live:
+        return [{"id": "empty", "ok": False, "detail": [],
+                 "msg": "Không bóc được dòng nào — có thể chọn sai trang. Gõ số trang thuyết minh rồi bấm 'Đọc ảnh lại', hoặc nhập tay."}]
     return [
         check_totals(rows, totals),
         check_finfo(rows, finfo),
