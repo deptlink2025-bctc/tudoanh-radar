@@ -1,0 +1,258 @@
+{
+ "generated_at": "2026-09-13T11:54:06+07:00",
+ "brokers": [
+  {
+   "symbol": "AGR",
+   "name": "Chứng khoán Agribank",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "BSI",
+   "name": "Chứng khoán BIDV",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "CTS",
+   "name": "Chứng khoán VietinBank",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "DSE",
+   "name": "Chứng khoán DNSE",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "FTS",
+   "name": "Chứng khoán FPT",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "HCM",
+   "name": "Chứng khoán TP.HCM",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "MBS",
+   "name": "Chứng khoán MB",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "ORS",
+   "name": "Chứng khoán Tiên Phong",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "SHS",
+   "name": "Chứng khoán Sài Gòn Hà Nội",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "SSI",
+   "name": "Chứng khoán SSI",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "TCX",
+   "name": "Chứng khoán Techcombank",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "VCI",
+   "name": "Chứng khoán Vietcap",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "VDS",
+   "name": "Chứng khoán Rồng Việt",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "VIX",
+   "name": "Chứng khoán VIX",
+   "floor": "",
+   "enabled": true
+  },
+  {
+   "symbol": "VND",
+   "name": "Chứng khoán VNDIRECT",
+   "floor": "",
+   "enabled": true
+  }
+ ],
+ "reports": [
+  {
+   "broker": "SHS",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T11:54:06",
+   "source_url": "https://s3-storage.shs.com.vn/shs-website/VI_SHS_Bao_Cao_Tai_Chinh_Q2_2026_UB_034c3261d1.pdf",
+   "note_pages": "23,24",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 27566961471493.0,
+    "st_fin_assets": 27432885244024.0,
+    "afs": 1418006484550.0,
+    "htm": 749808987855.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "CTG",
+     "raw_label": "CTG",
+     "is_listed": true,
+     "quantity": 3706273.0,
+     "quantity_source": "implied",
+     "cost_value": 128798657681.0,
+     "cost_source": "disclosed",
+     "fair_value": 123937768150.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HPG",
+     "raw_label": "HPG",
+     "is_listed": true,
+     "quantity": 5451000.0,
+     "quantity_source": "implied",
+     "cost_value": 133374803278.0,
+     "cost_source": "disclosed",
+     "fair_value": 127008300000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HCM",
+     "raw_label": "HCM",
+     "is_listed": true,
+     "quantity": 1391898.0,
+     "quantity_source": "implied",
+     "cost_value": 22201451920.0,
+     "cost_source": "disclosed",
+     "fair_value": 32640000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MWG",
+     "raw_label": "MWG",
+     "is_listed": true,
+     "quantity": 2199495.0,
+     "quantity_source": "implied",
+     "cost_value": 176058433453.0,
+     "cost_source": "disclosed",
+     "fair_value": 169141170000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2584696993423.0,
+     "cost_source": "disclosed",
+     "fair_value": 2783562333363.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 8094052576267.0,
+     "cost_source": "disclosed",
+     "fair_value": 8030665018788.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 40000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 41911058868.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng khoán ủy thác đầu tư",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 24590489655.0,
+     "cost_source": "disclosed",
+     "fair_value": 22805000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Công cụ thị trường tiền tệ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 2000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "SHB",
+     "raw_label": "SHB",
+     "is_listed": true,
+     "quantity": 67211421.0,
+     "quantity_source": "implied",
+     "cost_value": 275238748169.0,
+     "cost_source": "disclosed",
+     "fair_value": 910714754550.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "TCD",
+     "raw_label": "TCD",
+     "is_listed": true,
+     "quantity": 13011429.0,
+     "quantity_source": "implied",
+     "cost_value": 200000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 24591600000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 455317573155.0,
+     "cost_source": "disclosed",
+     "fair_value": 482700130000.0,
+     "fair_source": "disclosed"
+    }
+   ]
+  }
+ ]
+}
