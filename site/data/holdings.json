@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T16:47:25+07:00",
+ "generated_at": "2026-09-13T17:11:58+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -93,6 +93,119 @@
   }
  ],
  "reports": [
+  {
+   "broker": "AGR",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T17:11:58",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY 2/AGR_Baocaotaichinh_Q2_2026.zip",
+   "note_pages": "32,33,37,38,39,40",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 5896880914133.0,
+    "st_fin_assets": 5368562425395.0,
+    "afs": 138123000000.0,
+    "htm": 1660456397700.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Unlisted stocks",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 9474516654.0,
+     "cost_source": "disclosed",
+     "fair_value": 13744070258.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Bonds",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 296872000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 296872000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Certificate of deposit",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 102479823006.0,
+     "cost_source": "disclosed",
+     "fair_value": 102479823006.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Listed Stocks",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 99712033322.0,
+     "cost_source": "disclosed",
+     "fair_value": 113123000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Unlisted Stocks",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 25000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 25000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Certificates of Deposit, Bonds",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 0.0,
+     "cost_source": "disclosed",
+     "fair_value": 0.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Long-term HTM investments - Bonds",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 309763826714.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Short-term HTM investments - Time deposits, certificates of deposit, Bonds",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1660456397700.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
   {
    "broker": "HCM",
    "quarter": "2026Q2",
