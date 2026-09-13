@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T17:26:55+07:00",
+ "generated_at": "2026-09-13T17:27:44+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -1047,6 +1047,203 @@
      "cost_value": 425237693750.0,
      "cost_source": "disclosed",
      "fair_value": 425237693750.0,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "ORS",
+   "quarter": "2026Q2",
+   "stmt_type": "rieng",
+   "approved_at": "2026-09-13T17:27:44",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY 2/ORS_Baocaotaichinh_Q2_2026.zip",
+   "note_pages": "all",
+   "totals": {
+    "fiscalDate": "2026-06-30",
+    "total_assets": 15269277204581.0,
+    "st_fin_assets": 15119086723181.0,
+    "afs": 0.0,
+    "htm": 1608543260273.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 1100000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1455049228950.0,
+     "cost_source": "disclosed",
+     "fair_value": 1455049228950.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 70885731805.0,
+     "cost_source": "disclosed",
+     "fair_value": 66872458800.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 400000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 437965500000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 5900006818.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 3582612297795.0,
+     "cost_source": "disclosed",
+     "fair_value": 3564699845623.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn - Ngân hàng TNHH MTV Public Việt Nam",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 500000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 500000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TMCP Phát triển TP HCM",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 417442630137.0,
+     "cost_source": "disclosed",
+     "fair_value": 417442630137.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng Đầu Tư & Phát Triển Việt Nam",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 200000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 200000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TNHH MTV Việt Nam Hiện Đại",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 200000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 200000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TMCP Công Thương Việt Nam",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 157446630136.0,
+     "cost_source": "disclosed",
+     "fair_value": 157446630136.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TMCP Bản Việt",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 50000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 50000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TMCP Việt Nam Thịnh Vượng",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 50000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 50000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TNHH MTV Shinhan Việt Nam",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 33654000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 33654000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Ngân hàng TMCP Ngoại Thương Việt Nam",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
      "fair_source": "disclosed"
     }
    ]
