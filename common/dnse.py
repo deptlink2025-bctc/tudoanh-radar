@@ -7,12 +7,16 @@
 
 Endpoint: GET {DNSE_BASE}/stock?symbol=VNM&resolution=1D&from=<epoch>&to=<epoch>
 Trả về JSON dạng cột song song: {"t":[...],"o":[...],"h":[...],"l":[...],"c":[...],"v":[...]}
+
+Bẫy 14/09/2026: sau 15:00 DNSE vẫn trả nến ngày (và nến 1') của hôm đó dừng ở ~13:45 cho
+mọi mã, HTTP 200 — job 15:32 ghi 29/37 giá sai. Nên nến hôm nay chỉ được tin khi chuỗi nến
+1 phút đã có nến ATC (14:45): xem `today_minutes` / `session_settled` / `merge_today`.
 """
 from __future__ import annotations
 
 import logging
 import time
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, time as dtime, timedelta
 
 import httpx
 
@@ -66,6 +70,14 @@ class DnseClient:
 
     def daily(self, symbol: str) -> list[dict]:
         """Nến ngày, cũ → mới. Lỗi thì trả [] và ghi last_error, không ném ra ngoài."""
+        return self._get(symbol, "1D", self.days)
+
+    def today_minutes(self, symbol: str) -> list[dict]:
+        """Nến 1 phút của riêng hôm nay (giờ VN). Rỗng nếu hôm nay không có phiên/không khớp."""
+        today = datetime.now(TZ).date()
+        return [b for b in self._get(symbol, "1", 1) if b["d"] == today]
+
+    def _get(self, symbol: str, resolution: str, days: int) -> list[dict]:
         global last_ok, last_error
         wait = THROTTLE_SECONDS - (time.monotonic() - self._last_call)
         if wait > 0:
@@ -73,8 +85,8 @@ class DnseClient:
         now = datetime.now(TZ)
         params = {
             "symbol": symbol.upper(),
-            "resolution": "1D",
-            "from": int((now - timedelta(days=self.days)).timestamp()),
+            "resolution": resolution,
+            "from": int((now - timedelta(days=days)).timestamp()),
             "to": int((now + timedelta(days=1)).timestamp()),
         }
         try:
@@ -84,13 +96,45 @@ class DnseClient:
             bars = _parse(r.json())
         except Exception as exc:  # noqa: BLE001 — một mã hỏng không được làm chết cả vòng
             self._last_call = time.monotonic()
-            last_error = f"{symbol}: {exc}"
-            logger.warning("DNSE lỗi %s: %s", symbol, exc)
+            last_error = f"{symbol}/{resolution}: {exc}"
+            logger.warning("DNSE lỗi %s (%s): %s", symbol, resolution, exc)
             return []
         if bars:
             last_ok = datetime.now(TZ)
             last_error = ""
         return bars
+
+
+# Nến ATC của DNSE mang mốc 14:45. Có nó nghĩa là phiên đã khớp xong và nguồn đã cập nhật.
+ATC_TIME = dtime(14, 44)
+
+
+def aggregate_minutes(minutes: list[dict]) -> dict | None:
+    """Gộp nến 1 phút của một phiên thành nến ngày (VND), kèm `asof` = mốc nến cuối."""
+    if not minutes:
+        return None
+    return {
+        "d": minutes[0]["d"], "o": minutes[0]["o"],
+        "h": max(b["h"] for b in minutes), "l": min(b["l"] for b in minutes),
+        "c": minutes[-1]["c"], "v": sum(b["v"] for b in minutes),
+        "t": minutes[-1]["t"], "asof": minutes[-1]["t"],
+    }
+
+
+def session_settled(minutes: list[dict]) -> bool:
+    """Chuỗi nến 1' của hôm nay đã chạm nến ATC chưa. Rỗng → chưa (không có gì để tin)."""
+    if not minutes:
+        return False
+    return datetime.fromtimestamp(minutes[-1]["t"], TZ).time() >= ATC_TIME
+
+
+def merge_today(daily_last: dict, minutes: list[dict]) -> dict:
+    """Nến hôm nay: chọn giữa nến 1D của nguồn và bản gộp từ 1' — bản nào nhiều khối lượng
+    hơn thì chứa nhiều lệnh khớp hơn (hai bản mô tả cùng phiên). Bằng nhau → giữ 1D."""
+    agg = aggregate_minutes(minutes)
+    if agg is None or agg["d"] != daily_last["d"]:
+        return daily_last
+    return agg if agg["v"] > daily_last["v"] else daily_last
 
 
 def close_on_or_before(bars: list[dict], d: date) -> float | None:

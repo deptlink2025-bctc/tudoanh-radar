@@ -97,4 +97,11 @@ venv\Scripts\python -m pytest tests -q
 - DNSE và VNDirect finfo là API không chính thức. Lỗi → `docs/data/state.json` ghi `dnse_error`,
   giao diện hiện chấm đỏ, thứ Hai không có nhịp tim.
 - Web IR của CTCK phần lớn dựng bằng JS hoặc chặn máy → dùng Vietstock (`ingest/vietstock.py`). Vietstock đổi API thì kẹt bước tải → dán URL PDF tay.
-- GitHub cron có thể trễ 10–30 phút; có cron dự phòng 08:50 UTC.
+- GitHub cron có thể trễ 10–30 phút; có cron dự phòng 15:50, 16:30, 18:00 giờ VN.
+- **DNSE có lúc chưa chốt nến ngày dù đã đóng cửa (14/09/2026):** sau 15:30 nến ngày và nến 1'
+  của mọi mã vẫn dừng ở ~13:45, HTTP 200 — job 15:32 ghi 29/37 giá sai và giữ tới hôm sau.
+  Giờ `job/run_daily.py::fetch_bars` lấy thêm nến 1' hôm nay: nếu ≥ 20% mã thanh khoản (≥ 30
+  nến) chưa có nến ATC 14:45 thì **không ghi file**, ghi `state.unsettled`, giao diện báo "nguồn
+  giá chưa chốt", cron sau thử lại. Mã ít khớp lệnh (TDM) không được tính để khỏi báo nhầm.
+  Nến hôm nay là bản nhiều khối lượng hơn giữa 1D và bản gộp 1'. `--force` bỏ qua kiểm tra
+  nhưng khai `source.unsettled` trong `latest.json`.

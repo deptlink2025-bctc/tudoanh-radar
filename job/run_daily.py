@@ -3,8 +3,13 @@
 Luồng: holdings.json → giá DNSE cho mọi mã đang giữ → định giá từng công ty → so sánh 2 quý →
 soi 4 quy tắc → Web Push → ghi data/latest.json, data/state.json, data/daily/<ngày>.json.
 
-Idempotent: nếu hôm nay đã có file daily và không có --force thì thoát (cron dự phòng 08:50 UTC
-chạy lại chỉ khi lần 08:20 bị GitHub trễ/bỏ). Ngày không có phiên (lễ) → ghi 'no_session', không bắn.
+Idempotent: nếu hôm nay đã có file daily và không có --force thì thoát (các cron dự phòng chạy
+lại chỉ khi lần trước bị GitHub trễ/bỏ hoặc nguồn chưa chốt). Ngày không có phiên (lễ) → ghi
+'no_session', không bắn.
+
+Nguồn chưa chốt: 14/09/2026 DNSE sau 15:00 vẫn trả nến hôm đó dừng ở ~13:45 (HTTP 200), job
+15:32 ghi 29/37 giá sai. Giờ mỗi mã có nến hôm nay phải có thêm nến 1' chạm ATC 14:45 mới được
+tin; thiếu thì KHÔNG ghi file hôm nay, để cron sau (15:50, 16:30, 18:00) thử lại. --force bỏ qua.
 """
 from __future__ import annotations
 
@@ -41,16 +46,44 @@ def _dump(path, obj) -> None:
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
 
 
-def fetch_bars(tickers: list[str]) -> dict[str, list[dict]]:
+# Mã có ít nhất ngần này nến 1' trong ngày mới đủ thanh khoản để "bỏ phiếu" nguồn đã chốt
+# chưa. TDM ngày 14/09/2026 chỉ có 4 nến và không khớp ATC — xét từng mã sẽ báo nhầm mãi.
+LIQUID_MIN_BARS = 30
+# Tỷ lệ mã thanh khoản thiếu nến ATC từ mức này trở lên → coi nguồn chưa chốt (14/09/2026: 100%).
+UNSETTLED_RATIO = 0.2
+
+
+def fetch_bars(tickers: list[str], client=None) -> tuple[dict[str, list[dict]], list[str]]:
+    """Nến ngày cho từng mã + danh sách mã thanh khoản mà nến HÔM NAY chưa chốt (rỗng = nguồn ổn).
+
+    Mã nào có nến ngày của hôm nay thì lấy thêm nến 1' hôm nay; nến hôm nay là bản nhiều khối
+    lượng hơn giữa 1D và bản gộp 1'. Nguồn bị coi là chưa chốt khi ≥ UNSETTLED_RATIO số mã
+    thanh khoản chưa có nến ATC — mã ít khớp lệnh (UPCOM, mã nhỏ) không được tính.
+    """
     bars: dict[str, list[dict]] = {}
-    with dnse.DnseClient(days=400) as c:
+    voters: list[str] = []
+    lacking: list[str] = []
+    today = dnse.today_vn()
+    with (client or dnse.DnseClient(days=400)) as c:
         for i, t in enumerate(sorted(tickers), 1):
             b = c.daily(t)
-            if b:
-                bars[t] = b
+            if not b:
+                continue
+            if b[-1]["d"] == today:
+                minutes = c.today_minutes(t)
+                if len(minutes) >= LIQUID_MIN_BARS:
+                    voters.append(t)
+                    if not dnse.session_settled(minutes):
+                        lacking.append(t)
+                b[-1] = dnse.merge_today(b[-1], minutes)
+            bars[t] = b
             if i % 25 == 0:
                 log.info("giá: %d/%d mã", i, len(tickers))
-    return bars
+    unsettled = lacking if voters and len(lacking) / len(voters) >= UNSETTLED_RATIO else []
+    if lacking and not unsettled:
+        log.info("Mã thiếu nến ATC nhưng nguồn nhìn chung đã chốt (%d/%d): %s",
+                 len(lacking), len(voters), ", ".join(lacking))
+    return bars, unsettled
 
 
 def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> int:
@@ -74,7 +107,7 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
     # --- giá ---
     tickers = sorted({h["ticker"] for r in reports for h in r["holdings"] if h.get("ticker") and h.get("is_listed")})
     log.info("Lấy giá %d mã cho %d công ty", len(tickers), len(brokers))
-    bars = fetch_bars(tickers)
+    bars, unsettled = fetch_bars(tickers)
     if not bars:
         log.error("DNSE không trả về gì: %s", dnse.last_error)
         st["dnse_error"], st["last_run"] = dnse.last_error, now.isoformat(timespec="seconds")
@@ -86,6 +119,17 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
     if daily_file.exists() and not force:
         log.info("Đã có %s — không chạy lại (dùng --force nếu muốn)", daily_file.name)
         return 0
+    if unsettled and not force:
+        # Ghi file lúc này là ghi giá giữa phiên rồi giữ tới hôm sau (đã xảy ra 14/09/2026).
+        # Không ghi; cron dự phòng sẽ thử lại. Thoát 0 để bước commit vẫn đẩy state.json.
+        msg = (f"Nguồn chưa chốt phiên {trade_iso}: {len(unsettled)}/{len(bars)} mã chưa có nến ATC "
+               f"({', '.join(unsettled[:8])}{'…' if len(unsettled) > 8 else ''}) — chờ cron sau")
+        log.warning(msg)
+        st.update({"last_run": now.isoformat(timespec="seconds"), "unsettled": {"trade_date": trade_iso,
+                   "tickers": unsettled, "at": now.isoformat(timespec="seconds")}})
+        _dump(STATE, st)
+        return 0
+    st.pop("unsettled", None)
     if (now.date() - trade_date).days > 4:
         log.warning("Phiên gần nhất %s cách hôm nay quá 4 ngày — DNSE có thể chưa cập nhật", trade_iso)
 
@@ -146,7 +190,9 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
     latest = {
         "generated_at": now.isoformat(timespec="seconds"), "trade_date": trade_iso,
         "holdings_generated_at": hold.get("generated_at"),
-        "source": {"dnse_ok": bool(dnse.last_ok), "dnse_error": dnse.last_error, "n_tickers": len(tickers), "n_priced": len(bars)},
+        "source": {"dnse_ok": bool(dnse.last_ok), "dnse_error": dnse.last_error, "n_tickers": len(tickers), "n_priced": len(bars),
+                   # Mã ghi bằng giá chưa chốt (chỉ có khi --force ép chạy lúc nguồn còn thiếu)
+                   "unsettled": unsettled},
         "settings": {k: v for k, v in cfg.items() if not k.startswith("_")},
         "brokers": out_brokers, "industry": industry, "alerts": hot_first,
     }

@@ -45,6 +45,11 @@
       : "Chưa có báo cáo nào được chốt — bóc BCTC trên máy tính trước.";
     if (D.source && !D.source.dnse_ok) { $("noticeDot").style.background = "var(--down)"; $("noticeText").innerHTML += ` <b style="color:var(--down)">Nguồn giá DNSE lỗi: ${esc(D.source.dnse_error)}</b>`; }
     if (!(D.source && D.source.dnse_ok)) $("noticeDot").style.background = "var(--flag)";
+    if (D.source && D.source.unsettled && D.source.unsettled.length) {
+      // Chỉ xảy ra khi ép chạy (--force) lúc nguồn còn thiếu — giá các mã này là giữa phiên
+      $("noticeDot").style.background = "var(--flag)";
+      $("noticeText").innerHTML += ` <b style="color:var(--flag)">${D.source.unsettled.length} mã dùng giá chưa chốt (${esc(D.source.unsettled.slice(0, 6).join(", "))}${D.source.unsettled.length > 6 ? "…" : ""}).</b>`;
+    }
     renderAll();
     fetchSettingsFromWorker();
   }
@@ -198,7 +203,14 @@
       : `<div class="empty">Phiên ${dmy(D.trade_date)} không có gì vượt ngưỡng.</div>`;
     const p = D.push || {};
     fetch("data/state.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).then((st) => {
-      if (!st || !st.devices) return;
+      if (!st) return;
+      // Job đã chạy nhưng nguồn DNSE chưa chốt nến hôm đó → chưa ghi kết quả, chờ cron sau.
+      // Đây là lý do số trên app vẫn là của phiên trước dù đã quá 15:20.
+      if (st.unsettled && st.unsettled.trade_date > (D.trade_date || "")) {
+        $("noticeDot").style.background = "var(--flag)";
+        $("noticeText").innerHTML += ` <b style="color:var(--flag)">Phiên ${dmy(st.unsettled.trade_date)}: nguồn giá chưa chốt lúc ${st.unsettled.at.slice(11, 16)} (${st.unsettled.tickers.length} mã chưa có ATC) — job sẽ thử lại 15:50 / 16:30 / 18:00.</b>`;
+      }
+      if (!st.devices) return;
       const d = st.devices;
       const line = d.n ? `Job nhìn thấy <b>${d.n} máy</b> đã đăng ký (kiểm tra ${st.devices.checked_at.slice(11, 16)} ${dmy(d.checked_at)})${st.welcome ? " · đã gửi chào mừng " + dmy(st.welcome.at) : ""}`
         : `<b style="color:var(--down)">Job chưa thấy máy nào</b> — Secret PUSH_SUBS_FALLBACK trên GitHub chưa có hoặc trống (kiểm tra ${d.checked_at.slice(11, 16)} ${dmy(d.checked_at)})`;

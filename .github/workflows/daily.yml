@@ -1,11 +1,14 @@
-# Job sau phiên. 08:20 UTC = 15:20 giờ VN. Cron dự phòng 08:50 UTC chạy lại nếu lần đầu bị
-# GitHub trễ/bỏ — job idempotent nên có file hôm nay rồi thì thoát ngay.
+# Job sau phiên. 08:20 UTC = 15:20 giờ VN. Các cron dự phòng (15:50, 16:30, 18:00 VN) chạy
+# lại nếu lần trước bị GitHub trễ/bỏ HOẶC nguồn DNSE chưa chốt nến hôm đó (14/09/2026 nguồn
+# còn trả giá lúc 13:45 tới sau 15:30) — job idempotent nên có file hôm nay rồi thì thoát ngay.
 name: daily
 
 on:
   schedule:
     - cron: "20 8 * * 1-5"
     - cron: "50 8 * * 1-5"
+    - cron: "30 9 * * 1-5"
+    - cron: "0 11 * * 1-5"
   # Đẩy code hoặc holdings.json mới lên → chạy ngay (job idempotent, ~40 giây, miễn phí).
   # Commit của chính job mang [skip ci] nên không tự kích hoạt vòng lặp.
   push:
