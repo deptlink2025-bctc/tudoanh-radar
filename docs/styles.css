@@ -186,6 +186,10 @@ button{font:inherit;color:inherit}
 }
 .pick[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 
+/* Nút chuyển "Hôm nay / So giá vốn": nút đang chọn nổi màu accent như .pick */
+.seg{display:inline-flex;padding:3px;gap:3px;border:1px solid var(--line);border-radius:99px;background:var(--surface-2)}
+.seg button{border:0;background:transparent;color:var(--text-dim);padding:5px 12px;border-radius:99px;font-size:12.5px;font-weight:700;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 .seg.mini{padding:2px;gap:2px}
 .seg.mini button{padding:3px 9px;font-size:11px}
 
