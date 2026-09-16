@@ -36,6 +36,25 @@ def test_value_holdings_implied_and_today():
     assert v["vs_cost"]["cost"] == 20e9
 
 
+def test_stale_ticker_has_no_today_change_and_no_alert():
+    """Mã không khớp lệnh trong phiên (IDP 07→16/09/2026) không được mang biến động cũ đi mãi."""
+    today = BARS["HPG"][-1]["d"]
+    stale = {**BARS, "HPG": BARS["HPG"][:-3]}          # nến cuối của HPG cách phiên 3 ngày
+    assert stale["HPG"][-1]["d"] == today - timedelta(days=3)
+    v = valuation.value_holdings(HOLD, stale, QEND, trade_date=today)
+    hpg = [r for r in v["tracked"] if r["ticker"] == "HPG"][0]
+    vhm = [r for r in v["tracked"] if r["ticker"] == "VHM"][0]
+    assert hpg["d1"] == 0 and hpg["p1"] == 0.0 and hpg["stale_days"] == 3
+    assert hpg["close"] == 25_000 and hpg["market_value"] == 1_000_000 * 25_000  # giá cuối cùng đã biết
+    assert vhm["stale_days"] == 0 and round(vhm["p1"], 1) == 3.0            # mã có nến hôm nay: như cũ
+    assert v["today"]["change"] == vhm["d1"]
+    al, _ = rules.evaluate("XYZ", v, dict(settings.DEFAULTS), {})
+    assert not [a for a in al if a["ticker"] == "HPG" and a["rule"] in ("R1", "R3")]
+    # Không truyền trade_date → hành vi cũ (hai nến cuối), HPG vẫn −7 %
+    old = valuation.value_holdings(HOLD, BARS, QEND)
+    assert round([r for r in old["tracked"] if r["ticker"] == "HPG"][0]["p1"], 1) == -7.0
+
+
 def test_rules_r1_needs_both_conditions():
     v = valuation.value_holdings(HOLD, BARS, QEND)
     cfg = dict(settings.DEFAULTS)

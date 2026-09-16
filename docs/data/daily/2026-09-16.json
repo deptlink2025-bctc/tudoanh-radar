@@ -1,8 +1,8 @@
 {
  "trade_date": "2026-09-16",
- "generated_at": "2026-09-16T15:30:39+07:00",
+ "generated_at": "2026-09-16T19:11:50+07:00",
  "industry": {
-  "today_change": 292419875249.99994,
+  "today_change": 53811089749.99994,
   "n_today": 9,
   "vs_cost_change": 1286500737320.0,
   "size_total": 501354512908242.0,
@@ -11,24 +11,7 @@
   "buy": 0,
   "sell": 0
  },
- "alerts": [
-  {
-   "rule": "R2",
-   "broker": "VCI",
-   "ticker": "",
-   "hot": true,
-   "title": "VCI · danh mục thêm 300 tỷ trong phiên",
-   "body": "+5.29% so kết phiên hôm qua · IDP +15.0% kéo 241 tỷ"
-  },
-  {
-   "rule": "R1",
-   "broker": "VCI",
-   "ticker": "IDP",
-   "hot": false,
-   "title": "VCI · IDP +15.0%",
-   "body": "Giá trị nắm giữ 1.850 tỷ · thêm 241 tỷ trong phiên"
-  }
- ],
+ "alerts": [],
  "brokers": [
   {
    "symbol": "AGR",
@@ -156,9 +139,9 @@
    "n_tracked": 6,
    "today": {
     "value": 1206401895250.0,
-    "prev_value": 1211486096200.0,
-    "change": -5084200950.0,
-    "pct": -0.4196664712824427
+    "prev_value": 1208883810400.0,
+    "change": -2481915150.0,
+    "pct": -0.20530634364097633
    },
    "since_quarter": {
     "change": -181631697450.0,
@@ -208,9 +191,9 @@
    "n_tracked": 7,
    "today": {
     "value": 5967641116300.0,
-    "prev_value": 5667564037600.0,
-    "change": 300077078700.0,
-    "pct": 5.29463940255841
+    "prev_value": 5908775108900.0,
+    "change": 58866007400.0,
+    "pct": 0.996247213933299
    },
    "since_quarter": {
     "change": -333258463500.0,

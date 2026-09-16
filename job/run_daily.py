@@ -150,7 +150,7 @@ def run(force: bool = False, dry_run: bool = False, no_push: bool = False) -> in
             out_brokers.append(entry)
             continue
         qend = quarters.end_date(rep["quarter"])
-        val = valuation.value_holdings(rep["holdings"], bars, qend)
+        val = valuation.value_holdings(rep["holdings"], bars, qend, trade_date=trade_date)
         entry.update({
             "quarter": rep["quarter"], "approved_at": rep.get("approved_at"), "stmt_type": rep.get("stmt_type"),
             "detail": val["n_tracked"] > 0,

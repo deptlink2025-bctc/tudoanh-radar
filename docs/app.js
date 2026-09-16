@@ -148,7 +148,9 @@
       <div class="hsym"><span class="s mono">${h.ticker}</span><span class="num" style="font-size:10.5px;color:var(--text-mute)">${ty(h.market_value, 1)} tỷ</span></div>
       <div class="hmid"><div class="kl"><span class="num">${fmt(h.quantity / 1e6, 2)} tr cp</span>${srcChip(h.quantity_source)}</div>
         <div>giá gốc ${h.cost_value ? `<span class="num">${ty(h.cost_value, 1)}</span> tỷ${h.cost_source === "manual" ? ` <span class="chip man">nhập tay</span>` : ""}` : `<span style="color:var(--text-mute)">không có</span>`}</div></div>
-      <div class="hval"><span class="v num ${cls(h.d1)}">${sign(h.d1)}${ty(abs(h.d1), 1)} tỷ</span><span class="c num ${cls(h.d1)}">${sign(h.p1)}${fmt(abs(h.p1), 1)}%</span></div></button>`).join("")}</div>
+      <div class="hval">${h.stale_days > 0
+        ? `<span class="v num" style="color:var(--text-mute)">0 tỷ</span><span class="c" style="color:var(--text-mute)">chưa khớp từ ${dmy(h.trade_date).slice(0, 5)}</span>`
+        : `<span class="v num ${cls(h.d1)}">${sign(h.d1)}${ty(abs(h.d1), 1)} tỷ</span><span class="c num ${cls(h.d1)}">${sign(h.p1)}${fmt(abs(h.p1), 1)}%</span>`}</div></button>`).join("")}</div>
     <div class="srcline">BCTC ${b.stmt_type === "rieng" ? "riêng lẻ" : "hợp nhất"} ${qlabel(b.quarter)} · chốt ${dmy(b.approved_at)}</div>`;
     $("hold").addEventListener("click", (e) => { const r = e.target.closest("[data-t]"); if (r) openSheet(b, b.holdings.find((h) => h.ticker === r.dataset.t)); });
   }
@@ -346,8 +348,11 @@
     $("shSym").textContent = h.ticker; $("shSub").textContent = `${b.symbol} nắm giữ · ${h.asset_class}`;
     const vc = h.vs_cost, sq = h.since_q;
     $("shBody").innerHTML = `<dl class="kv">
-      <dt><b>Kết phiên ${dmy(D.trade_date)}</b></dt><dd class="num ${cls(h.d1)}" style="font-size:16px">${sign(h.d1)}${ty(abs(h.d1), 2)} tỷ · ${sign(h.p1)}${fmt(abs(h.p1), 1)}%</dd>
-      <dt>Giá đóng cửa</dt><dd class="num">${fmt(h.close, 0)} đ (hôm trước ${fmt(h.prev_close, 0)})</dd>
+      ${h.stale_days > 0
+        ? `<dt><b>Kết phiên ${dmy(D.trade_date)}</b></dt><dd style="color:var(--text-mute);font-weight:500">không khớp lệnh — ${h.stale_days} ngày chưa có giao dịch</dd>
+      <dt>Giá cuối cùng</dt><dd class="num">${fmt(h.close, 0)} đ <span style="color:var(--text-mute);font-weight:500">(phiên ${dmy(h.trade_date)})</span></dd>`
+        : `<dt><b>Kết phiên ${dmy(D.trade_date)}</b></dt><dd class="num ${cls(h.d1)}" style="font-size:16px">${sign(h.d1)}${ty(abs(h.d1), 2)} tỷ · ${sign(h.p1)}${fmt(abs(h.p1), 1)}%</dd>
+      <dt>Giá đóng cửa</dt><dd class="num">${fmt(h.close, 0)} đ (hôm trước ${fmt(h.prev_close, 0)})</dd>`}
       <dt>Khối lượng</dt><dd class="num">${fmt(h.quantity, 0)} cp</dd>
       <dt>Nguồn khối lượng</dt><dd>${h.quantity_source === "manual" ? `<span class="chip man">nhập tay</span>` : h.quantity_source === "implied" ? `<span class="chip est">ước tính từ giá</span>` : `<span class="chip disc">công bố trong BCTC</span>`}</dd>
       ${h.cost_value ? `<dt>Giá gốc${h.cost_source === "manual" ? ` <span class="chip man">nhập tay</span>` : ""}</dt><dd class="num">${ty(h.cost_value, 2)} tỷ</dd>` : `<dt>Giá gốc</dt><dd style="color:var(--text-mute);font-weight:500">không có trong BCTC</dd>`}

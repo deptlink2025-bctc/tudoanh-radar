@@ -25,8 +25,14 @@ def report_for(reports: list[dict], broker: str, quarter: str) -> dict | None:
     return mine[-1] if mine else None
 
 
-def value_holdings(holdings: list[dict], bars: dict[str, list[dict]], quarter_end: date) -> dict:
+def value_holdings(holdings: list[dict], bars: dict[str, list[dict]], quarter_end: date,
+                   trade_date: date | None = None) -> dict:
     """Trả về {tracked: [...], other_fair, n_tracked, today, since_quarter, vs_cost}.
+
+    `trade_date` = ngày phiên của lần chạy. Mã không có nến ngày đó (không khớp lệnh — IDP chỉ
+    100 cp/phiên, đứng im từ 07/09/2026) thì biến động hôm nay = 0 và `stale_days` > 0; nếu
+    không kiểm tra, job sẽ đem mức ±15% của phiên cũ ra báo lại mỗi ngày (đã xảy ra 14–16/09/2026).
+    `None` = tin hai nến cuối (chỉ dùng trong test cũ).
 
     tracked = dòng cổ phiếu niêm yết có KL (công bố/ước tính/nhập tay) và có giá.
     other_fair = giá trị hợp lý của phần còn lại (trái phiếu, OTC, 'cổ phiếu khác') — không mark được.
@@ -49,14 +55,22 @@ def value_holdings(holdings: list[dict], bars: dict[str, list[dict]], quarter_en
         if not qty:
             other_fair += fv
             continue
-        close, prev = b[-1]["c"], (b[-2]["c"] if len(b) > 1 else b[-1]["c"])
+        last = b[-1]
+        close = last["c"]
+        stale_days = 0
+        if trade_date is None or last["d"] == trade_date:
+            prev = b[-2]["c"] if len(b) > 1 else close
+        else:
+            # Không khớp lệnh trong phiên này → không có biến động hôm nay; giữ giá cuối cùng đã biết.
+            prev = close
+            stale_days = (trade_date - last["d"]).days
         mv = qty * close
         row = {
             "ticker": t, "asset_class": h.get("asset_class"),
             "quantity": qty, "quantity_source": qsrc,
             "cost_value": h.get("cost_value"), "cost_source": h.get("cost_source") or "disclosed",
             "fair_value": fv or None, "fair_source": h.get("fair_source") or "disclosed",
-            "close": close, "prev_close": prev, "trade_date": b[-1]["d"].isoformat(),
+            "close": close, "prev_close": prev, "trade_date": last["d"].isoformat(), "stale_days": stale_days,
             "market_value": mv, "d1": qty * (close - prev), "p1": round((close / prev - 1) * 100, 4) if prev else 0.0,
             "since_q": (mv - fv) if fv else None,
             "vs_cost": (mv - h["cost_value"]) if h.get("cost_value") else None,
