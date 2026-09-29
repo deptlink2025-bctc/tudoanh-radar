@@ -34,8 +34,8 @@
    "r4": "-"
   }
  },
- "last_run": "2026-09-28T15:33:09+07:00",
- "last_trade_date": "2026-09-28",
+ "last_run": "2026-09-29T15:32:37+07:00",
+ "last_trade_date": "2026-09-29",
  "dnse_error": "",
  "push": {
   "source": "fallback",
@@ -43,8 +43,7 @@
   "sent": 0,
   "gone": 0,
   "failed": 0,
-  "errors": [],
-  "heartbeat": 1
+  "errors": []
  },
  "welcome": {
   "at": "2026-09-13T19:28:57+07:00",
@@ -60,6 +59,6 @@
   "n": 1,
   "source": "fallback",
   "vapid": true,
-  "checked_at": "2026-09-28T18:15:32+07:00"
+  "checked_at": "2026-09-29T15:32:37+07:00"
  }
 }
