@@ -1,0 +1,263 @@
+{
+ "trade_date": "2026-10-06",
+ "generated_at": "2026-10-06T15:33:24+07:00",
+ "industry": {
+  "today_change": 17461930300.0,
+  "n_today": 9,
+  "vs_cost_change": 1245279529920.0,
+  "size_total": 501354512908242.0,
+  "rollup": [],
+  "n_with_diff": 0,
+  "buy": 0,
+  "sell": 0
+ },
+ "alerts": [],
+ "brokers": [
+  {
+   "symbol": "AGR",
+   "quarter": "2026Q2",
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "BSI",
+   "quarter": "2026Q2",
+   "n_tracked": 2,
+   "today": {
+    "value": 204112395000.0,
+    "prev_value": 204240045000.0,
+    "change": -127650000.0,
+    "pct": -0.0624999862294362
+   },
+   "since_quarter": {
+    "change": -19244022000.0,
+    "pct": -8.615835738446687
+   },
+   "vs_cost": {
+    "cost": 215909804477.0,
+    "value": 204112395000.0,
+    "change": -11797409477.0,
+    "pct": -5.464045278340624,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "CTS",
+   "quarter": "2026Q2",
+   "n_tracked": 12,
+   "today": {
+    "value": 549039443500.0,
+    "prev_value": 550079556800.0,
+    "change": -1040113300.0,
+    "pct": -0.18908415830806158
+   },
+   "since_quarter": {
+    "change": -128914763510.0,
+    "pct": -19.01526123402292
+   },
+   "vs_cost": {
+    "cost": 669449313574.0,
+    "value": 549039443500.0,
+    "change": -120409870074.0,
+    "pct": -17.986405786446458,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "DSE",
+   "quarter": "2026Q2",
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "FTS",
+   "quarter": "2026Q2",
+   "n_tracked": 1,
+   "today": {
+    "value": 363600000000.0,
+    "prev_value": 364200000000.0,
+    "change": -600000000.0,
+    "pct": -0.16474464579900872
+   },
+   "since_quarter": {
+    "change": -43200000000.0,
+    "pct": -10.619469026548678
+   },
+   "vs_cost": {
+    "cost": 10946813906.0,
+    "value": 363600000000.0,
+    "change": 352653186094.0,
+    "pct": 3221.5143979081363,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "HCM",
+   "quarter": "2026Q2",
+   "n_tracked": 9,
+   "today": {
+    "value": 965182855100.0,
+    "prev_value": 963677186400.0,
+    "change": 1505668700.0,
+    "pct": 0.15624201976023322
+   },
+   "since_quarter": {
+    "change": -84498678850.0,
+    "pct": -8.04993477707735
+   },
+   "vs_cost": {
+    "cost": 1049956565263.0,
+    "value": 965182855100.0,
+    "change": -84773710163.0,
+    "pct": -8.074020675490068,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "MBS",
+   "quarter": "2026Q2",
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "ORS",
+   "quarter": "2026Q2",
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "SHS",
+   "quarter": "2026Q2",
+   "n_tracked": 6,
+   "today": {
+    "value": 1168437861550.0,
+    "prev_value": 1170944680900.0,
+    "change": -2506819350.0,
+    "pct": -0.21408520751580173
+   },
+   "since_quarter": {
+    "change": -219595731150.0,
+    "pct": -15.820635199674305
+   },
+   "vs_cost": {
+    "cost": 935672096501.0,
+    "value": 1168437861550.0,
+    "change": 232765765049.0,
+    "pct": 24.876852256195427,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "SSI",
+   "quarter": "2026Q2",
+   "n_tracked": 10,
+   "today": {
+    "value": 1135205856600.0,
+    "prev_value": 1121153826400.0,
+    "change": 14052030200.0,
+    "pct": 1.2533543452392104
+   },
+   "since_quarter": {
+    "change": -34058937650.0,
+    "pct": -2.912850691946678
+   },
+   "vs_cost": {
+    "cost": 1141799921650.0,
+    "value": 1135205856600.0,
+    "change": -6594065050.0,
+    "pct": -0.5775149327800766,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "TCX",
+   "quarter": "2026Q2",
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "VCI",
+   "quarter": "2026Q2",
+   "n_tracked": 7,
+   "today": {
+    "value": 5995760063050.0,
+    "prev_value": 5991496134000.0,
+    "change": 4263929050.0,
+    "pct": 0.07116634901596086
+   },
+   "since_quarter": {
+    "change": -305139516750.0,
+    "pct": -4.842792888308267
+   },
+   "vs_cost": {
+    "cost": 4565479800684.0,
+    "value": 5995760063050.0,
+    "change": 1430280262366.0,
+    "pct": 31.32814785757492,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "VDS",
+   "quarter": "2026Q2",
+   "n_tracked": 8,
+   "today": {
+    "value": 727336618200.0,
+    "prev_value": 726631969900.0,
+    "change": 704648300.0,
+    "pct": 0.09697457986839186
+   },
+   "since_quarter": {
+    "change": -155554779200.0,
+    "pct": -17.618789769397292
+   },
+   "vs_cost": {
+    "cost": 1059775442171.0,
+    "value": 727336618200.0,
+    "change": -332438823971.0,
+    "pct": -31.368798590952764,
+    "n_missing": 0
+   }
+  },
+  {
+   "symbol": "VIX",
+   "quarter": "2026Q2",
+   "n_tracked": 0,
+   "today": null,
+   "since_quarter": null,
+   "vs_cost": null
+  },
+  {
+   "symbol": "VND",
+   "quarter": "2026Q2",
+   "n_tracked": 6,
+   "today": {
+    "value": 938938227500.0,
+    "prev_value": 937727990800.0,
+    "change": 1210236700.0,
+    "pct": 0.12906052841266114
+   },
+   "since_quarter": {
+    "change": -90934046700.0,
+    "pct": -8.829643148771737
+   },
+   "vs_cost": {
+    "cost": 1153344032354.0,
+    "value": 938938227500.0,
+    "change": -214405804854.0,
+    "pct": -18.5899262353136,
+    "n_missing": 0
+   }
+  }
+ ]
+}
