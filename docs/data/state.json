@@ -34,8 +34,8 @@
    "r4": "-"
   }
  },
- "last_run": "2026-10-06T15:33:24+07:00",
- "last_trade_date": "2026-10-06",
+ "last_run": "2026-10-07T15:34:53+07:00",
+ "last_trade_date": "2026-10-07",
  "dnse_error": "",
  "push": {
   "source": "fallback",
@@ -59,6 +59,6 @@
   "n": 1,
   "source": "fallback",
   "vapid": true,
-  "checked_at": "2026-10-06T18:15:33+07:00"
+  "checked_at": "2026-10-07T15:34:53+07:00"
  }
 }
