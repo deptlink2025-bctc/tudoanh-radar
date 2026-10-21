@@ -34,16 +34,11 @@
    "r4": "-"
   }
  },
- "last_run": "2026-10-20T20:34:13+07:00",
- "last_trade_date": "2026-10-20",
+ "last_run": "2026-10-21T17:55:47+07:00",
+ "last_trade_date": "2026-10-21",
  "dnse_error": "",
  "push": {
-  "source": "fallback",
-  "n_devices": 1,
-  "sent": 0,
-  "gone": 0,
-  "failed": 0,
-  "errors": []
+  "skipped": true
  },
  "welcome": {
   "at": "2026-09-13T19:28:57+07:00",
