@@ -64,7 +64,7 @@ jobs:
           PUSH_SUBS_FALLBACK: ${{ secrets.PUSH_SUBS_FALLBACK }}
         run: |
           if [ "${{ github.event.inputs.force }}" = "true" ]; then FORCE=--force; else FORCE=; fi
-          python -m job.run_daily $FORCE
+          python -m job.run_daily $FORCE --no-push   # Stock Hub gửi thông báo từ 21/10/2026
 
       - name: Commit kết quả
         run: |
