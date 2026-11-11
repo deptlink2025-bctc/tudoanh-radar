@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T22:12:52+07:00",
+ "generated_at": "2026-11-11T22:12:56+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -4599,6 +4599,191 @@
      "quantity": null,
      "quantity_source": "disclosed",
      "cost_value": 20000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu Ngân hàng TMCP Công thương Việt Nam (*)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 300000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (**)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 800000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "VDS",
+   "quarter": "2026Q3",
+   "stmt_type": "rieng",
+   "approved_at": "2026-11-11T22:12:56",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY 3/VDS_Baocaotaichinh_Q3_2026_Congtyme.pdf",
+   "note_pages": "33,34",
+   "totals": {
+    "fiscalDate": "2026-09-30",
+    "total_assets": 7424891063002.0,
+    "st_fin_assets": 6119959710849.0,
+    "afs": 352044773760.0,
+    "htm": 150000000000.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "KBC",
+     "raw_label": "KBC",
+     "is_listed": true,
+     "quantity": 11138300.0,
+     "quantity_source": "implied",
+     "cost_value": 355440219099.0,
+     "cost_source": "disclosed",
+     "fair_value": 282912820000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "MWG",
+     "raw_label": "MWG",
+     "is_listed": true,
+     "quantity": 1264492.0,
+     "quantity_source": "implied",
+     "cost_value": 98257188839.0,
+     "cost_source": "disclosed",
+     "fair_value": 90347960000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HSG",
+     "raw_label": "HSG",
+     "is_listed": true,
+     "quantity": 5683150.0,
+     "quantity_source": "implied",
+     "cost_value": 95964630662.0,
+     "cost_source": "disclosed",
+     "fair_value": 56831500000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác (niêm yết)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 396730785874.0,
+     "cost_source": "disclosed",
+     "fair_value": 304382213700.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "DDV",
+     "raw_label": "DDV",
+     "is_listed": true,
+     "quantity": 705607.0,
+     "quantity_source": "implied",
+     "cost_value": 17861738571.0,
+     "cost_source": "disclosed",
+     "fair_value": 11430839900.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác (chưa niêm yết)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 15022619262.0,
+     "cost_source": "disclosed",
+     "fair_value": 13451571079.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "KDH",
+     "raw_label": "KDH",
+     "is_listed": true,
+     "quantity": 6602151.0,
+     "quantity_source": "implied",
+     "cost_value": 203100000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 92100000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "CMG",
+     "raw_label": "CMG",
+     "is_listed": true,
+     "quantity": 3844960.0,
+     "quantity_source": "implied",
+     "cost_value": 142142975000.0,
+     "cost_source": "disclosed",
+     "fair_value": 81513152000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "EIB",
+     "raw_label": "EIB",
+     "is_listed": true,
+     "quantity": 4010000.0,
+     "quantity_source": "implied",
+     "cost_value": 99636305000.0,
+     "cost_source": "disclosed",
+     "fair_value": 68370500000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác (niêm yết)",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 79396170000.0,
+     "cost_source": "disclosed",
+     "fair_value": 61515121760.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "QNS",
+     "raw_label": "QNS",
+     "is_listed": true,
+     "quantity": 948164.0,
+     "quantity_source": "implied",
+     "cost_value": 50000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 48546000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn dưới 1 năm",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 150000000000.0,
      "cost_source": "disclosed",
      "fair_value": null,
      "fair_source": "disclosed"
