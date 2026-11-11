@@ -70,7 +70,8 @@ def push(message: str = "") -> str:
         remotes = subprocess.run(["git", "remote"], cwd=ROOT, capture_output=True, text=True).stdout.split()
         if not remotes:
             return "Đã commit local. Chưa cấu hình remote GitHub nên chưa push (xem README)"
-        p = subprocess.run(git + ["push"], cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="ignore")
+        # Nhánh local là master, nhánh GitHub là main → `git push` trơn bị Git từ chối (11/11/2026, Q3 kẹt 15 commit).
+        p = subprocess.run(git + ["push", remotes[0], "HEAD:main"], cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="ignore")
         return "Đã đẩy lên GitHub" if p.returncode == 0 else f"Push lỗi: {p.stderr.strip()[:300]}"
     except subprocess.CalledProcessError as exc:
         return f"git lỗi: {(exc.stderr or b'').decode(errors='ignore')[:300]}"
