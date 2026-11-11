@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T21:42:37+07:00",
+ "generated_at": "2026-11-11T21:42:49+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -2768,6 +2768,131 @@
      "cost_value": null,
      "cost_source": "disclosed",
      "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "ORS",
+   "quarter": "2026Q3",
+   "stmt_type": "rieng",
+   "approved_at": "2026-11-11T21:42:49",
+   "source_url": "https://static2.vietstock.vn/data/HOSE/2026/BCTC/VN/QUY%203/ORS_Baocaotaichinh_Q3_2026.zip?ver=4bb5f4bc",
+   "note_pages": "26,27,28,41",
+   "totals": {
+    "fiscalDate": "2026-09-30",
+    "total_assets": 17313571875467.0,
+    "st_fin_assets": 17244652907586.0,
+    "afs": 1592904350255.0,
+    "htm": 4170189043776.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 1002000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 202494161800.0,
+     "cost_source": "disclosed",
+     "fair_value": 202494161800.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 221337159305.0,
+     "cost_source": "disclosed",
+     "fair_value": 204852745550.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 430400000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 469066000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 5900006818.0,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2035922391950.0,
+     "cost_source": "disclosed",
+     "fair_value": 2018009939778.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Tiền gửi có kỳ hạn còn lại dưới 1 năm",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 4170189043776.0,
+     "cost_source": "disclosed",
+     "fair_value": 4170189043776.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Chứng chỉ tiền gửi",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1222972869587.0,
+     "cost_source": "disclosed",
+     "fair_value": 1222972869587.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Trái phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 369931480668.0,
+     "cost_source": "disclosed",
+     "fair_value": 369931480668.0,
      "fair_source": "disclosed"
     }
    ]
