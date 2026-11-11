@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T21:42:49+07:00",
+ "generated_at": "2026-11-11T21:43:41+07:00",
  "brokers": [
   {
    "symbol": "AGR",
@@ -3090,6 +3090,227 @@
      "cost_value": null,
      "cost_source": "disclosed",
      "fair_value": null,
+     "fair_source": "disclosed"
+    }
+   ]
+  },
+  {
+   "broker": "SHS",
+   "quarter": "2026Q3",
+   "stmt_type": "rieng",
+   "approved_at": "2026-11-11T21:43:36",
+   "source_url": "https://s3-storage.shs.com.vn/shs-website/VI_SHS_Bao_Cao_Tai_Chinh_Q3_2026_UB_94d6052636.pdf",
+   "note_pages": "25,26",
+   "totals": {
+    "fiscalDate": "2026-09-30",
+    "total_assets": 29053827666847.0,
+    "st_fin_assets": 28823279906087.0,
+    "afs": 2494862250450.0,
+    "htm": 1429173437325.0
+   },
+   "holdings": [
+    {
+     "asset_class": "FVTPL",
+     "ticker": "FRT",
+     "raw_label": "FRT",
+     "is_listed": true,
+     "quantity": 130678.0,
+     "quantity_source": "implied",
+     "cost_value": 16919504574.0,
+     "cost_source": "disclosed",
+     "fair_value": 19209666000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "VPB",
+     "raw_label": "VPB",
+     "is_listed": true,
+     "quantity": 2850263.0,
+     "quantity_source": "implied",
+     "cost_value": 63021953931.0,
+     "cost_source": "disclosed",
+     "fair_value": 66696154200.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "CTG",
+     "raw_label": "CTG",
+     "is_listed": true,
+     "quantity": 3150018.0,
+     "quantity_source": "implied",
+     "cost_value": 109375200290.0,
+     "cost_source": "disclosed",
+     "fair_value": 94500540000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "HPG",
+     "raw_label": "HPG",
+     "is_listed": true,
+     "quantity": 4101000.0,
+     "quantity_source": "implied",
+     "cost_value": 99587936347.0,
+     "cost_source": "disclosed",
+     "fair_value": 82635150000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 2364552722638.0,
+     "cost_source": "disclosed",
+     "fair_value": 2132083767063.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Trái phiếu",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 5937567049861.0,
+     "cost_source": "disclosed",
+     "fair_value": 5875269513388.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng chỉ quỹ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 55000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 55986772648.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Chứng khoán ủy thác đầu tư",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 32656314129.0,
+     "cost_source": "disclosed",
+     "fair_value": 31383523600.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "FVTPL",
+     "ticker": "",
+     "raw_label": "Công cụ thị trường tiền tệ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "SHB",
+     "raw_label": "SHB",
+     "is_listed": true,
+     "quantity": 67207421.0,
+     "quantity_source": "implied",
+     "cost_value": 275222367694.0,
+     "cost_source": "disclosed",
+     "fair_value": 769524970450.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "TCD",
+     "raw_label": "TCD",
+     "is_listed": true,
+     "quantity": 13662000.0,
+     "quantity_source": "implied",
+     "cost_value": 200000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 12295800000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Cổ phiếu khác",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 458261228305.0,
+     "cost_source": "disclosed",
+     "fair_value": 413041480000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "AFS",
+     "ticker": "",
+     "raw_label": "Trái phiếu",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 1300000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 1300000000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": null,
+     "cost_source": "disclosed",
+     "fair_value": null,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Trái phiếu chưa niêm yết",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 744673437325.0,
+     "cost_source": "disclosed",
+     "fair_value": 744673437325.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Công cụ thị trường tiền tệ",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 294500000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 294500000000.0,
+     "fair_source": "disclosed"
+    },
+    {
+     "asset_class": "HTM",
+     "ticker": "",
+     "raw_label": "Các khoản đầu tư nắm giữ đến ngày đáo hạn đem thế chấp",
+     "is_listed": false,
+     "quantity": null,
+     "quantity_source": "disclosed",
+     "cost_value": 390000000000.0,
+     "cost_source": "disclosed",
+     "fair_value": 390000000000.0,
      "fair_source": "disclosed"
     }
    ]
